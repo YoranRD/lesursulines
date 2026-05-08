@@ -1,0 +1,28 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Hero from "../components/sections/Hero.astro";
+import HoursSection from "../components/sections/HoursSection.astro";
+import MenuPreview from "../components/sections/MenuPreview.astro";
+import BrunchTeaTime from "../components/sections/BrunchTeaTime.astro";
+import HouseValues from "../components/sections/HouseValues.astro";
+import GalleryHome from "../components/sections/GalleryHome.astro";
+import SocialProof from "../components/sections/SocialProof.astro";
+import StorySection from "../components/sections/StorySection.astro";
+import GroupsSection from "../components/sections/GroupsSection.astro";
+---
+
+<BaseLayout
+  title="Les Ursulines — Restaurant végétalien à Dieppe"
+  description="Restaurant végétalien à Dieppe, Les Ursulines propose des plats faits maison, brunch le dimanche, desserts, thé, café et une cuisine végétale chaleureuse près du port."
+  includeRestaurantSchema={true}
+>
+  <Hero />
+  <HoursSection />
+  <MenuPreview />
+  <BrunchTeaTime />
+  <HouseValues />
+  <GalleryHome />
+  <SocialProof />
+  <StorySection />
+  <GroupsSection />
+</BaseLayout>

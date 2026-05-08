@@ -1,0 +1,81 @@
+/* Design tokens — Les Ursulines
+   Palette Wada Olive Rose 22 + Tea Leaf 23 + Forest Dust 25.
+   Voir brain/colors.md et brain/typography.md. */
+
+:root {
+  /* Couleurs — fonds */
+  --bg-cream: #f4e9e0;
+  --bg-soft: #f7f2ea;
+  --bg-tea: #f0ebe1;
+  --bg-paper: #fbf6ef;
+
+  /* Couleurs — végétal */
+  --olive: #7b8262;
+  --olive-deep: #6e7b63;
+  --forest: #5e6a57;
+  --charcoal: #33404d;
+
+  /* Couleurs — chaleur */
+  --terracotta: #c08478;
+  --honey: #ba8a63;
+  --coffee: #4b3f3a;
+
+  /* Couleurs — texte */
+  --ink: #2f332c;
+  --ink-soft: #6c7480;
+  --ink-mute: #8b8c84;
+
+  /* Couleurs — utilitaires */
+  --line: rgba(47, 51, 44, 0.16);
+  --line-soft: rgba(47, 51, 44, 0.08);
+  --shadow-sm: 0 1px 2px rgba(47, 51, 44, 0.06);
+  --shadow-md: 0 6px 18px rgba(47, 51, 44, 0.08);
+  --shadow-lg: 0 18px 40px rgba(47, 51, 44, 0.12);
+
+  /* Typographies */
+  --font-serif: "Cormorant Garamond", "Cormorant", Georgia, serif;
+  --font-sans: "Source Sans 3", "Source Sans Pro", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-script: "Caveat", "Brush Script MT", cursive;
+
+  /* Échelle typographique fluide */
+  --fs-display: clamp(2.5rem, 6vw + 0.5rem, 4.25rem);
+  --fs-h1: clamp(2.1rem, 4.5vw + 0.5rem, 3.4rem);
+  --fs-h2: clamp(1.6rem, 3vw + 0.5rem, 2.4rem);
+  --fs-h3: clamp(1.25rem, 1.4vw + 0.6rem, 1.6rem);
+  --fs-lead: clamp(1.05rem, 0.4vw + 1rem, 1.2rem);
+  --fs-body: 1.0625rem;
+  --fs-small: 0.9rem;
+  --fs-mini: 0.78rem;
+  --fs-script-sm: 1.1rem;
+  --fs-script-md: 1.4rem;
+
+  /* Espacement */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-7: 2.5rem;
+  --space-8: 3.5rem;
+  --space-9: 5rem;
+  --space-10: 7rem;
+
+  /* Conteneur */
+  --container: 1180px;
+  --container-narrow: 760px;
+  --container-wide: 1320px;
+
+  /* Rayons */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 18px;
+  --radius-xl: 28px;
+  --radius-pill: 999px;
+
+  /* Transitions */
+  --t-fast: 160ms;
+  --t-base: 240ms;
+  --t-slow: 480ms;
+  --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+}

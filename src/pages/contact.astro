@@ -1,0 +1,188 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeading from "../components/ui/SectionHeading.astro";
+import HoursCard from "../components/ui/HoursCard.astro";
+import ContactCard from "../components/ui/ContactCard.astro";
+import GinaMascot from "../components/ui/GinaMascot.astro";
+import { contact } from "../data/site";
+
+// TODO: remplacer par la clé Web3Forms réelle.
+// Tant que la clé est ce placeholder, le formulaire pointe vers Web3Forms
+// mais l'envoi ne fonctionnera pas. Le mailto fallback ci-dessous est actif.
+const WEB3FORMS_KEY = "TODO_WEB3FORMS_ACCESS_KEY";
+const formAction = "https://api.web3forms.com/submit";
+const mailtoFallback = `mailto:${contact.email}?subject=Demande%20%E2%80%94%20Les%20Ursulines`;
+---
+
+<BaseLayout
+  title="Contact, horaires & réservation — Les Ursulines Dieppe"
+  description="Appelez Les Ursulines, trouvez l'adresse sur le port de Dieppe, consultez les horaires et envoyez une demande de réservation ou de brunch de groupe."
+>
+  <section class="section section--cream">
+    <div class="container container--narrow">
+      <span class="eyebrow">Nous contacter</span>
+      <h1>Réserver, demander, venir nous voir.</h1>
+      <p class="lead">
+        Le plus simple, surtout pour une réservation, reste le téléphone. Vous pouvez aussi nous écrire — on revient vers vous dès que possible.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--paper">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="reveal"><HoursCard /></div>
+        <div class="reveal"><ContactCard /></div>
+      </div>
+      <div class="contact-gina reveal">
+        <GinaMascot
+          variant="guide"
+          size="md"
+          caption="Gina vous montre le chemin."
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="container container--narrow">
+      <SectionHeading
+        eyebrow="Écrire un message"
+        title="Réservation, groupe, commande, autre."
+        lead="Un mot sur votre demande, et on revient vers vous. Pour une réservation ce week-end, le téléphone reste plus rapide."
+      />
+
+      <form
+        class="contact-form reveal"
+        action={formAction}
+        method="POST"
+        novalidate
+      >
+        <!-- TODO: remplacer la valeur access_key par la vraie clé Web3Forms -->
+        <input type="hidden" name="access_key" value={WEB3FORMS_KEY} />
+        <input type="hidden" name="from_name" value="Site Les Ursulines" />
+        <input type="hidden" name="subject" value="Nouvelle demande — Site Les Ursulines" />
+        <input type="text" name="botcheck" class="visually-hidden" tabindex="-1" autocomplete="off" />
+
+        <div class="contact-form__grid">
+          <label class="field">
+            <span>Nom <span class="required-mark">*</span></span>
+            <input name="name" type="text" required autocomplete="name" />
+          </label>
+          <label class="field">
+            <span>Email <span class="required-mark">*</span></span>
+            <input name="email" type="email" required autocomplete="email" />
+          </label>
+          <label class="field">
+            <span>Téléphone</span>
+            <input name="phone" type="tel" autocomplete="tel" />
+          </label>
+          <label class="field">
+            <span>Type de demande</span>
+            <select name="type">
+              <option value="reservation">Réservation</option>
+              <option value="brunch">Brunch (dimanche)</option>
+              <option value="groupe">Groupe / privatisation</option>
+              <option value="commande">Commande de gâteau / pâtisserie</option>
+              <option value="autre">Autre</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Date souhaitée</span>
+            <input name="date" type="date" />
+          </label>
+          <label class="field">
+            <span>Nombre de personnes</span>
+            <input name="people" type="number" min="1" max="40" />
+          </label>
+          <label class="field field--full">
+            <span>Message</span>
+            <textarea name="message" rows="5" placeholder="Votre demande, vos préférences éventuelles…"></textarea>
+          </label>
+        </div>
+
+        <p class="contact-form__note">
+          Le formulaire sera activé prochainement (TODO : clé Web3Forms à intégrer). En attendant, le plus rapide est l'appel ou l'email.
+        </p>
+
+        <div class="cluster contact-form__actions">
+          <button class="btn" type="submit">Envoyer ma demande</button>
+          <a class="btn btn--ghost" href={mailtoFallback}>Écrire par email</a>
+          <a class="btn btn--ghost" href={contact.phoneHref}>Appeler</a>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section class="section section--cream">
+    <div class="container container--narrow">
+      <div class="contact-en card">
+        <p class="contact-en__title">English-speaking visitors</p>
+        <p class="contact-en__body">
+          English-speaking visitors welcome — find us on the port of Dieppe or contact us before your visit. Open Friday, Saturday and Sunday only. The daily menu is shared on Instagram <a href={contact.instagram} target="_blank" rel="noopener noreferrer">@les.ursulines</a>.
+        </p>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .lead {
+    font-size: var(--fs-lead);
+    color: var(--ink-soft);
+  }
+  .contact-grid {
+    display: grid;
+    gap: var(--space-5);
+  }
+  @media (min-width: 760px) {
+    .contact-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .contact-gina {
+    margin-top: var(--space-6);
+    display: flex;
+    justify-content: center;
+  }
+  .contact-form {
+    background: var(--bg-paper);
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius-xl);
+    padding: clamp(1.5rem, 3vw, 2.2rem);
+    box-shadow: var(--shadow-sm);
+  }
+  .contact-form__grid {
+    display: grid;
+    gap: var(--space-4);
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 720px) {
+    .contact-form__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .contact-form__note {
+    margin: var(--space-5) 0 0;
+    font-size: 0.92rem;
+    color: var(--ink-mute);
+    font-style: italic;
+  }
+  .contact-form__actions {
+    margin-top: var(--space-4);
+  }
+
+  .contact-en {
+    border-left: 4px solid var(--terracotta);
+  }
+  .contact-en__title {
+    font-family: var(--font-serif);
+    font-size: 1.25rem;
+    color: var(--ink);
+    margin: 0 0 0.4rem;
+  }
+  .contact-en__body {
+    margin: 0;
+    color: var(--ink-soft);
+  }
+</style>

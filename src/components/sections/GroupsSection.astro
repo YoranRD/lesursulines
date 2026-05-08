@@ -1,0 +1,52 @@
+---
+import { contact } from "../../data/site";
+import { url } from "../../lib/url";
+import SectionHeading from "../ui/SectionHeading.astro";
+---
+
+<section class="section section--charcoal" id="groupes">
+  <div class="container">
+    <div class="groups reveal">
+      <div class="groups__copy">
+        <SectionHeading
+          eyebrow="Groupes & privatisation"
+          title="Une grande table végétale, pour vos moments."
+          lead="Anniversaire, EVJF, brunch entre proches : Les Ursulines accueille les groupes sur demande, dans une ambiance calme et conviviale. On en parle ensemble."
+        />
+      </div>
+      <div class="groups__cta">
+        <a class="btn btn--warm" href={contact.phoneHref}>Appeler — {contact.phone}</a>
+        <a class="btn btn--ghost" href={url("contact")}>Demande de groupe</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .groups {
+    display: grid;
+    gap: var(--space-7);
+    align-items: center;
+  }
+  .groups__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+  .groups__cta .btn--ghost {
+    color: var(--bg-cream);
+    border-color: rgba(244, 233, 224, 0.4);
+  }
+  .groups__cta .btn--ghost:hover {
+    border-color: var(--bg-cream);
+    color: #fff;
+  }
+  @media (min-width: 820px) {
+    .groups {
+      grid-template-columns: 1.4fr 1fr;
+    }
+    .groups__cta {
+      justify-content: flex-end;
+    }
+  }
+</style>

@@ -1,0 +1,95 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site, contact } from "../data/site";
+---
+
+<BaseLayout
+  title="Mentions légales — Les Ursulines"
+  description="Mentions légales du site Les Ursulines, restaurant végétalien à Dieppe."
+>
+  <section class="section section--cream">
+    <div class="container container--narrow">
+      <span class="eyebrow">Informations légales</span>
+      <h1>Mentions légales</h1>
+      <p class="lead">
+        Cette page sera complétée prochainement. Les éléments officiels (raison sociale, SIRET, hébergeur, responsable de publication) seront ajoutés une fois validés par l'établissement.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--paper">
+    <div class="container container--narrow">
+      <article class="legal">
+        <h2>Éditeur du site</h2>
+        <p>
+          <strong>{site.name}</strong> — Restaurant végétalien.<br />
+          Adresse : {contact.address.full}.<br />
+          Téléphone : <a href={contact.phoneHref}>{contact.phone}</a>.<br />
+          Email : <span class="legal__todo">{contact.email} — TODO : remplacer par l'email définitif des Ursulines.</span>
+        </p>
+
+        <h2>Raison sociale et identification</h2>
+        <p class="legal__todo">
+          TODO : compléter raison sociale exacte, statut juridique, numéro SIRET, capital social éventuel et numéro de TVA intracommunautaire si applicable.
+        </p>
+
+        <h2>Responsable de publication</h2>
+        <p class="legal__todo">
+          TODO : indiquer le nom et la fonction du responsable de la publication.
+        </p>
+
+        <h2>Hébergement</h2>
+        <p>
+          Site hébergé sur GitHub Pages — GitHub, Inc., 88 Colin P Kelly Jr St, San Francisco, CA 94107, États-Unis.
+        </p>
+
+        <h2>Propriété intellectuelle</h2>
+        <p>
+          L'ensemble des contenus (textes, images, identité visuelle) présents sur ce site est la propriété des Ursulines, sauf mention contraire. Toute reproduction sans autorisation préalable est interdite.
+        </p>
+
+        <h2>Données personnelles</h2>
+        <p class="legal__todo">
+          TODO : préciser la politique de gestion des données personnelles dès qu'un formulaire de contact actif sera en ligne (formulaire Web3Forms à activer).
+        </p>
+
+        <h2>Cookies</h2>
+        <p>
+          Le site n'utilise pas de cookies de mesure d'audience ni de cookies publicitaires. Aucun consentement n'est donc requis pour la consultation.
+        </p>
+
+        <h2>Crédits photos</h2>
+        <p>
+          Photographies du lieu, des plats, de la façade et des desserts : Les Ursulines.
+        </p>
+      </article>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .lead {
+    font-size: var(--fs-lead);
+    color: var(--ink-soft);
+  }
+  .legal {
+    background: var(--bg-paper);
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius-xl);
+    padding: clamp(1.5rem, 4vw, 2.5rem);
+  }
+  .legal h2 {
+    font-size: 1.3rem;
+    margin-top: var(--space-6);
+  }
+  .legal h2:first-of-type {
+    margin-top: 0;
+  }
+  .legal p {
+    color: var(--ink-soft);
+  }
+  .legal__todo {
+    color: var(--terracotta);
+    font-style: italic;
+  }
+</style>

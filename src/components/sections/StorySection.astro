@@ -1,0 +1,97 @@
+---
+import { asset, url } from "../../lib/url";
+import { images } from "../../data/images";
+import { team } from "../../data/site";
+import GinaMascot from "../ui/GinaMascot.astro";
+import SectionHeading from "../ui/SectionHeading.astro";
+
+export interface Props {
+  expanded?: boolean;
+}
+const { expanded = false } = Astro.props;
+---
+
+<section class="section section--soft" id="histoire">
+  <div class="container">
+    <div class="story">
+      <div class="story__media reveal">
+        <img src={asset(images.facade3.file)} alt={images.facade3.alt} loading="lazy" decoding="async" />
+      </div>
+
+      <div class="story__copy reveal">
+        <SectionHeading
+          eyebrow="Le lieu"
+          title="Frédérique cuisine, Delphine accueille, Gina observe."
+        />
+        <p>
+          Les Ursulines est un comptoir végétalien à bulles et à culture, ouvert sur le port de Dieppe. {team.chef.name} cuisine — végétal, fait maison, généreux. {team.host.name} accueille — direction artistique, salle, attention aux gens. {team.mascot.name}, petite bouledogue française noire, observe ce qui tombe sous la table.
+        </p>
+        <p>
+          On y vient pour un vrai repas, un dessert, un thé, un brunch dominical, ou simplement parce qu'il fait bon de s'asseoir. Le lieu est inclusif, ouvert, sans jugement — manger végétal y est une invitation, pas une condition.
+        </p>
+        {expanded && (
+          <p>
+            La cuisine est pensée au rythme du marché et des saisons. Les plats changent : c'est ce qui fait la vie de la maison. Le menu du jour est annoncé sur Instagram — le plus simple, pour anticiper, est de nous appeler.
+          </p>
+        )}
+        <div class="story__cta">
+          {!expanded && (
+            <a class="btn btn--ghost" href={url("a-propos")}>En savoir plus</a>
+          )}
+          <GinaMascot
+            variant="welcome"
+            size="sm"
+            caption="Gina veille aussi sur la maison."
+            class="story__gina"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .story {
+    display: grid;
+    gap: var(--space-7);
+  }
+  .story__media {
+    position: relative;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    background: var(--bg-paper);
+  }
+  .story__media img {
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+  }
+  .story__copy p {
+    color: var(--ink-soft);
+  }
+  .story__cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-5);
+    align-items: center;
+    margin-top: var(--space-3);
+  }
+  .story__gina {
+    margin-left: auto;
+  }
+  @media (max-width: 540px) {
+    .story__gina {
+      margin-left: 0;
+    }
+  }
+  @media (min-width: 820px) {
+    .story {
+      grid-template-columns: 0.95fr 1.05fr;
+      align-items: center;
+    }
+    .story__media img {
+      aspect-ratio: 4 / 5;
+    }
+  }
+</style>

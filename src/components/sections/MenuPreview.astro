@@ -1,0 +1,94 @@
+---
+import { asset, url } from "../../lib/url";
+import { contact } from "../../data/site";
+import { images } from "../../data/images";
+import SectionHeading from "../ui/SectionHeading.astro";
+---
+
+<section class="section section--cream" id="menu-du-jour">
+  <div class="container">
+    <div class="menu-preview">
+      <div class="menu-preview__copy reveal">
+        <SectionHeading
+          eyebrow="Aujourd'hui à l'ardoise"
+          title="Une carte vivante, faite maison."
+          lead="Les assiettes suivent le marché, les saisons et l'inspiration de la cuisine. Le menu du jour est annoncé sur Instagram."
+        />
+        <ul class="menu-preview__list">
+          <li><strong>Plats du jour</strong> — deux assiettes au choix, généreuses, fait maison.</li>
+          <li><strong>Desserts</strong> — pâtisseries végétales, gâteaux, cookies du jour.</li>
+          <li><strong>Tea-time</strong> — thé, café, boissons fraîches, douceurs sucrées.</li>
+          <li><strong>Sans gluten</strong> — souvent disponible, demandez-nous.</li>
+        </ul>
+        <div class="cluster menu-preview__ctas">
+          <a class="btn" href="https://www.instagram.com/les.ursulines/" target="_blank" rel="noopener noreferrer">Voir le menu du jour sur Instagram</a>
+          <a class="btn btn--ghost" href={url("carte")}>Comprendre la carte</a>
+          <a class="btn btn--ghost" href={contact.phoneHref}>Appeler</a>
+        </div>
+      </div>
+
+      <div class="menu-preview__media reveal">
+        <figure>
+          <img src={asset(images.plat2.file)} alt={images.plat2.alt} loading="lazy" decoding="async" />
+          <figcaption>Le menu change : c'est ce qui fait la vie de la maison.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .menu-preview {
+    display: grid;
+    gap: var(--space-7);
+  }
+  .menu-preview__list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--space-5);
+    display: grid;
+    gap: 0.55rem;
+    color: var(--ink);
+  }
+  .menu-preview__list li {
+    padding-left: 1.4rem;
+    position: relative;
+  }
+  .menu-preview__list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.7rem;
+    width: 8px;
+    height: 8px;
+    background: var(--terracotta);
+    border-radius: 50%;
+  }
+  .menu-preview__media figure {
+    margin: 0;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    background: var(--bg-soft);
+    box-shadow: var(--shadow-md);
+  }
+  .menu-preview__media img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+  }
+  .menu-preview__media figcaption {
+    font-family: var(--font-script);
+    font-size: var(--fs-script-md);
+    color: var(--olive-deep);
+    text-align: center;
+    padding: 0.7rem 1rem;
+    background: var(--bg-paper);
+  }
+  @media (min-width: 820px) {
+    .menu-preview {
+      grid-template-columns: 1.05fr 0.95fr;
+      align-items: center;
+    }
+  }
+</style>

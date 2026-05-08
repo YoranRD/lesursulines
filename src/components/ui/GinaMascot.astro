@@ -1,0 +1,163 @@
+---
+/**
+ * GinaMascot — affiche la mascotte Gina (WebP optimisés depuis les PNG officiels).
+ * Sources : /Images/Gina, copiées et converties dans /public/images/gina/.
+ * Reste discrète, accessible et responsive.
+ */
+import { asset } from "../../lib/url";
+
+export interface Props {
+  variant?:
+    | "main"
+    | "welcome"
+    | "smile"
+    | "smile-profile"
+    | "serious"
+    | "cake"
+    | "cake-profile"
+    | "tea"
+    | "guide"
+    | "birthday"
+    | "birthday-profile"
+    | "thumbs-up";
+  size?: "sm" | "md" | "lg";
+  caption?: string;
+  decorative?: boolean;
+  class?: string;
+}
+
+const {
+  variant = "main",
+  size = "md",
+  caption,
+  decorative = false,
+  class: className = "",
+} = Astro.props;
+
+const ALLOWED = [
+  "main",
+  "welcome",
+  "smile",
+  "smile-profile",
+  "serious",
+  "cake",
+  "cake-profile",
+  "tea",
+  "guide",
+  "birthday",
+  "birthday-profile",
+  "thumbs-up",
+] as const;
+const safeVariant = (ALLOWED as readonly string[]).includes(variant) ? variant : "main";
+const fileSrc = asset(`images/gina/gina-${safeVariant}.webp`);
+
+const altByVariant: Record<string, string> = {
+  main: "Gina, la petite bouledogue française des Ursulines.",
+  welcome: "Gina accueille les visiteurs.",
+  smile: "Gina sourit joyeusement.",
+  "smile-profile": "Gina sourit, vue de profil.",
+  serious: "Gina, mascotte des Ursulines.",
+  cake: "Gina mange une part de gâteau.",
+  "cake-profile": "Gina observe une part de gâteau.",
+  tea: "Gina boit une tasse de thé.",
+  guide: "Gina indique le chemin.",
+  birthday: "Gina fête un anniversaire.",
+  "birthday-profile": "Gina porte un petit chapeau d'anniversaire.",
+  "thumbs-up": "Gina fait un clin d'œil avec une patte levée.",
+};
+
+const computedAlt = decorative ? "" : caption ?? altByVariant[safeVariant] ?? "";
+---
+
+<figure
+  class:list={["gina", `gina--${size}`, className]}
+  data-variant={safeVariant}
+>
+  <img
+    class="gina__img"
+    src={fileSrc}
+    alt={computedAlt}
+    loading="lazy"
+    decoding="async"
+    aria-hidden={decorative ? "true" : undefined}
+  />
+  {caption && !decorative && <figcaption class="gina__caption">{caption}</figcaption>}
+</figure>
+
+<style>
+  .gina {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    margin: 0;
+    color: var(--ink);
+    line-height: 1.2;
+  }
+  .gina__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    object-fit: contain;
+    object-position: center;
+    transition: transform var(--t-base) var(--ease);
+    border-radius: var(--radius-md);
+  }
+  .gina:hover .gina__img {
+    transform: translateY(-2px);
+  }
+  .gina__caption {
+    font-family: var(--font-script);
+    color: var(--olive-deep);
+    font-size: var(--fs-script-sm);
+    text-align: center;
+    margin: 0;
+    max-width: 22ch;
+  }
+
+  /* Tailles — sobres, jamais dominantes */
+  .gina--sm {
+    width: clamp(64px, 10vw, 96px);
+  }
+  .gina--sm .gina__img {
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    height: auto;
+  }
+  .gina--md {
+    width: clamp(120px, 16vw, 180px);
+  }
+  .gina--md .gina__img {
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    height: auto;
+  }
+  .gina--lg {
+    width: clamp(180px, 24vw, 260px);
+  }
+  .gina--lg .gina__img {
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    height: auto;
+  }
+
+  /* Sur mobile : empêcher Gina de prendre plus de ~38% de la largeur */
+  @media (max-width: 540px) {
+    .gina--md {
+      max-width: 38vw;
+    }
+    .gina--lg {
+      max-width: 50vw;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .gina__img {
+      transition: none;
+    }
+    .gina:hover .gina__img {
+      transform: none;
+    }
+  }
+</style>

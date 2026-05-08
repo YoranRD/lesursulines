@@ -1,0 +1,142 @@
+---
+import { site, contact, hours, navFooter } from "../../data/site";
+import { url } from "../../lib/url";
+---
+
+<footer class="site-footer">
+  <div class="container site-footer__inner">
+    <div class="site-footer__brand">
+      <p class="site-footer__name">{site.name}</p>
+      <p class="site-footer__sig">{site.signature}</p>
+      <p class="site-footer__addr">{contact.address.full}</p>
+      <p>
+        <a href={contact.phoneHref}>{contact.phone}</a>
+      </p>
+      <p class="site-footer__social">
+        <a href={contact.instagram} target="_blank" rel="noopener noreferrer">Instagram {contact.instagramHandle}</a>
+      </p>
+    </div>
+
+    <div class="site-footer__hours">
+      <p class="site-footer__label">Horaires</p>
+      <ul>
+        {hours.map((h) => (
+          <li>
+            <span>{h.day}</span>
+            <span>{h.closed ? "Fermé" : (h.slots ?? []).join(" · ")}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+
+    <nav class="site-footer__nav" aria-label="Liens du site">
+      <p class="site-footer__label">Le site</p>
+      <ul>
+        {navFooter.map((item) => (
+          <li><a href={url(item.href)}>{item.label}</a></li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+
+  <div class="site-footer__base">
+    <div class="container site-footer__base-inner">
+      <p>© {new Date().getFullYear()} {site.name} — Restaurant végétalien · Dieppe.</p>
+      <p class="site-footer__sub">Site vitrine · {site.signature}.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    background: var(--forest);
+    color: var(--bg-cream);
+    padding-top: clamp(3rem, 6vw, 5rem);
+    margin-top: clamp(3rem, 6vw, 5rem);
+  }
+  .site-footer a {
+    color: inherit;
+    text-decoration-color: rgba(244, 233, 224, 0.4);
+  }
+  .site-footer a:hover {
+    text-decoration-color: var(--terracotta);
+    color: #fff;
+  }
+  .site-footer__inner {
+    display: grid;
+    gap: var(--space-7);
+    grid-template-columns: 1fr;
+  }
+  .site-footer__name {
+    font-family: var(--font-serif);
+    font-size: 1.6rem;
+    margin: 0 0 0.2rem;
+  }
+  .site-footer__sig {
+    font-family: var(--font-script);
+    font-size: 1.25rem;
+    color: var(--terracotta);
+    margin: 0 0 var(--space-4);
+  }
+  .site-footer__addr {
+    margin: 0 0 0.4rem;
+  }
+  .site-footer__social {
+    margin-top: var(--space-3);
+  }
+  .site-footer__label {
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    margin: 0 0 var(--space-3);
+    color: var(--bg-cream);
+  }
+  .site-footer__hours ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.35rem;
+  }
+  .site-footer__hours li {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    font-size: 0.95rem;
+    color: rgba(244, 233, 224, 0.92);
+  }
+  .site-footer__hours li span:first-child {
+    font-weight: 500;
+  }
+  .site-footer__nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.5rem;
+  }
+  .site-footer__nav a {
+    text-decoration: none;
+  }
+  .site-footer__base {
+    margin-top: clamp(2rem, 4vw, 3.5rem);
+    padding-block: var(--space-5);
+    border-top: 1px solid rgba(244, 233, 224, 0.18);
+    font-size: 0.86rem;
+  }
+  .site-footer__base-inner {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+    justify-content: space-between;
+    color: rgba(244, 233, 224, 0.85);
+  }
+  .site-footer__sub {
+    font-style: italic;
+    margin: 0;
+  }
+  @media (min-width: 720px) {
+    .site-footer__inner {
+      grid-template-columns: 1.4fr 1fr 1fr;
+    }
+  }
+</style>

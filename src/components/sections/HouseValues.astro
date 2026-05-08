@@ -1,0 +1,70 @@
+---
+import SectionHeading from "../ui/SectionHeading.astro";
+
+const values = [
+  {
+    eyebrow: "Fait maison",
+    title: "Cuisine végétale, faite ici.",
+    body: "Frédérique cuisine chaque jour : assiettes du marché, desserts maison, brioches, cookies. Pas de produits surgelés industriels.",
+  },
+  {
+    eyebrow: "Local, dès que possible",
+    title: "Au rythme du marché.",
+    body: "Beaucoup de fruits et légumes viennent de maraîchers locaux. Pas de promesses excessives — simplement la saison, quand elle se présente.",
+  },
+  {
+    eyebrow: "Pour tout le monde",
+    title: "Vegan, mais ouvert aux curieux.",
+    body: "Pas besoin d'être vegan pour pousser la porte. Une cuisine végétale généreuse, pensée pour qui veut bien manger sans étiquette.",
+  },
+];
+---
+
+<section class="section section--cream" id="valeurs">
+  <div class="container">
+    <SectionHeading
+      eyebrow="L'esprit de la maison"
+      title="Trois choses qui ne changent pas."
+      align="center"
+    />
+
+    <div class="values">
+      {values.map((v) => (
+        <article class="values__card reveal">
+          <span class="values__eyebrow eyebrow">{v.eyebrow}</span>
+          <h3 class="values__title">{v.title}</h3>
+          <p class="values__body">{v.body}</p>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .values {
+    display: grid;
+    gap: var(--space-5);
+    grid-template-columns: 1fr;
+  }
+  .values__card {
+    padding: clamp(1.5rem, 3vw, 2rem);
+    background: var(--bg-paper);
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+  }
+  .values__title {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+  }
+  .values__body {
+    color: var(--ink-soft);
+    margin: 0;
+  }
+  @media (min-width: 720px) {
+    .values {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

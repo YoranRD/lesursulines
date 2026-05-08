@@ -1,0 +1,258 @@
+---
+import { site, navMain, contact } from "../../data/site";
+import { url, asset } from "../../lib/url";
+
+const current = Astro.url.pathname.replace(/\/+$/, "");
+const isActive = (href: string) => {
+  const target = url(href).replace(/\/+$/, "");
+  return current === target || (href !== "" && current.startsWith(target));
+};
+---
+
+<header class="site-header">
+  <div class="container site-header__inner">
+    <a href={url("")} class="brand" aria-label="Accueil — Les Ursulines">
+      <img
+        src={asset("images/logo_ursulines.webp")}
+        alt=""
+        class="brand__logo"
+        width="44"
+        height="44"
+        loading="eager"
+        decoding="async"
+      />
+      <span class="brand__text">
+        <span class="brand__name">{site.name}</span>
+        <span class="brand__sig">comptoir végétalien · Dieppe</span>
+      </span>
+    </a>
+
+    <nav class="nav" aria-label="Navigation principale">
+      <ul class="nav__list">
+        {navMain.map((item) => (
+          <li>
+            <a
+              href={url(item.href)}
+              class:list={["nav__link", { "is-active": isActive(item.href) }]}
+              aria-current={isActive(item.href) ? "page" : undefined}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+
+    <div class="header-cta">
+      <a href={contact.phoneHref} class="btn btn--ghost header-cta__phone" aria-label={`Appeler ${site.name}`}>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.13 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/>
+        </svg>
+        <span>{contact.phone}</span>
+      </a>
+    </div>
+
+    <button class="nav-toggle" type="button" aria-label="Ouvrir le menu" aria-controls="mobile-nav" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div id="mobile-nav" class="mobile-nav" hidden>
+    <ul>
+      {navMain.map((item) => (
+        <li><a href={url(item.href)} class="mobile-nav__link">{item.label}</a></li>
+      ))}
+      <li><a href={contact.phoneHref} class="mobile-nav__link mobile-nav__phone">{`Appeler ${contact.phone}`}</a></li>
+    </ul>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 40;
+    background: rgba(244, 233, 224, 0.92);
+    backdrop-filter: saturate(140%) blur(8px);
+    -webkit-backdrop-filter: saturate(140%) blur(8px);
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .site-header__inner {
+    display: flex;
+    align-items: center;
+    gap: var(--space-5);
+    min-height: 68px;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    text-decoration: none;
+    color: var(--ink);
+    margin-right: auto;
+    min-width: 0;
+  }
+  .brand__logo {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    background: var(--bg-paper);
+    border: 1px solid var(--line-soft);
+    border-radius: 50%;
+    padding: 4px;
+    flex-shrink: 0;
+    transition: transform var(--t-fast) var(--ease);
+  }
+  .brand:hover .brand__logo {
+    transform: rotate(-3deg);
+  }
+  .brand__text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.05;
+    min-width: 0;
+  }
+  .brand__name {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    white-space: nowrap;
+  }
+  .brand__sig {
+    font-family: var(--font-script);
+    font-size: 0.92rem;
+    color: var(--olive-deep);
+    white-space: nowrap;
+  }
+  /* Sur très petit écran, on peut masquer la signature pour garder de la place. */
+  @media (max-width: 380px) {
+    .brand__sig {
+      display: none;
+    }
+    .brand__logo {
+      width: 40px;
+      height: 40px;
+    }
+    .brand__name {
+      font-size: 1.15rem;
+    }
+  }
+  .nav {
+    display: none;
+  }
+  .nav__list {
+    display: flex;
+    gap: var(--space-5);
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .nav__link {
+    text-decoration: none;
+    color: var(--ink);
+    font-size: 0.96rem;
+    font-weight: 500;
+    padding: 0.4rem 0;
+    border-bottom: 2px solid transparent;
+    transition: color var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease);
+  }
+  .nav__link:hover {
+    color: var(--olive-deep);
+  }
+  .nav__link.is-active {
+    color: var(--forest);
+    border-bottom-color: var(--terracotta);
+  }
+  .header-cta {
+    display: none;
+  }
+  .header-cta__phone {
+    padding: 0.55rem 1rem;
+    font-size: 0.9rem;
+  }
+  .nav-toggle {
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 42px;
+    height: 42px;
+    padding: 0;
+    background: transparent;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+  }
+  .nav-toggle span {
+    display: block;
+    width: 18px;
+    height: 1.5px;
+    background: var(--ink);
+    margin-inline: auto;
+  }
+  .mobile-nav {
+    border-top: 1px solid var(--line-soft);
+    background: var(--bg-paper);
+  }
+  .mobile-nav ul {
+    list-style: none;
+    padding: var(--space-3) 0;
+    margin: 0;
+  }
+  .mobile-nav__link {
+    display: block;
+    padding: 0.85rem clamp(1rem, 4vw, 2rem);
+    color: var(--ink);
+    text-decoration: none;
+    font-size: 1.05rem;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .mobile-nav__link:last-child {
+    border-bottom: 0;
+  }
+  .mobile-nav__phone {
+    color: var(--olive-deep);
+    font-weight: 600;
+  }
+  @media (min-width: 880px) {
+    .nav { display: block; }
+    .header-cta { display: inline-flex; }
+    .nav-toggle { display: none; }
+    .mobile-nav { display: none !important; }
+  }
+</style>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>(".nav-toggle");
+  const panel = document.getElementById("mobile-nav") as HTMLElement | null;
+
+  function setOpen(open: boolean) {
+    if (!toggle || !panel) return;
+    toggle.setAttribute("aria-expanded", String(open));
+    if (open) {
+      panel.removeAttribute("hidden");
+    } else {
+      panel.setAttribute("hidden", "");
+    }
+  }
+
+  if (toggle && panel) {
+    toggle.addEventListener("click", () => {
+      const open = toggle.getAttribute("aria-expanded") === "true";
+      setOpen(!open);
+    });
+
+    // Fermer le menu sur clic d'un lien (utile pour les ancres ou navigations rapides).
+    panel.querySelectorAll<HTMLAnchorElement>("a").forEach((a) => {
+      a.addEventListener("click", () => setOpen(false));
+    });
+
+    // Fermer le menu sur Escape.
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape" && toggle.getAttribute("aria-expanded") === "true") {
+        setOpen(false);
+        toggle.focus();
+      }
+    });
+  }
+</script>

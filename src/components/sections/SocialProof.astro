@@ -1,0 +1,99 @@
+---
+import { contact } from "../../data/site";
+import ReviewBadge from "../ui/ReviewBadge.astro";
+import SectionHeading from "../ui/SectionHeading.astro";
+---
+
+<section class="section section--tea" id="confiance">
+  <div class="container">
+    <div class="proof reveal">
+      <div class="proof__heading">
+        <SectionHeading
+          eyebrow="Ils sont déjà passés"
+          title="Une table appréciée des Dieppois et des voyageurs."
+          lead="La note Google parle pour nous : c'est l'écho de tous ceux qui ont poussé la porte. Pour le menu d'aujourd'hui, c'est sur Instagram."
+        />
+      </div>
+
+      <div class="proof__cards">
+        <div class="proof__card proof__card--rating">
+          <ReviewBadge />
+          <p class="proof__note">
+            Note Google fournie par les avis des visiteurs.
+            <span class="visually-hidden">
+              Note non incluse en données structurées tant que la source officielle Google Business n'est pas vérifiée.
+            </span>
+          </p>
+        </div>
+
+        <div class="proof__card">
+          <p class="proof__title">Suivre l'ardoise du jour</p>
+          <p class="proof__body">
+            Les plats changent — Instagram est l'endroit le plus fiable pour voir le menu de chaque service.
+          </p>
+          <a class="btn btn--warm" href={contact.instagram} target="_blank" rel="noopener noreferrer">
+            Instagram {contact.instagramHandle}
+          </a>
+        </div>
+
+        <div class="proof__card">
+          <p class="proof__title">Réserver une table</p>
+          <p class="proof__body">
+            Pour un repas seul, à deux, en famille ou en groupe. Le téléphone reste le moyen le plus simple.
+          </p>
+          <a class="btn" href={contact.phoneHref}>Appeler {contact.phone}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .proof {
+    display: grid;
+    gap: var(--space-7);
+  }
+  .proof__cards {
+    display: grid;
+    gap: var(--space-4);
+    grid-template-columns: 1fr;
+  }
+  .proof__card {
+    padding: clamp(1.25rem, 3vw, 1.8rem);
+    background: var(--bg-paper);
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .proof__card--rating {
+    align-items: flex-start;
+    background: linear-gradient(160deg, var(--bg-paper) 0%, var(--bg-soft) 100%);
+  }
+  .proof__title {
+    font-family: var(--font-serif);
+    font-size: 1.35rem;
+    color: var(--ink);
+    margin: 0;
+  }
+  .proof__body {
+    margin: 0;
+    color: var(--ink-soft);
+  }
+  .proof__note {
+    font-size: 0.85rem;
+    color: var(--ink-mute);
+    margin: 0.5rem 0 0;
+  }
+  .proof__card .btn {
+    align-self: flex-start;
+    margin-top: 0.4rem;
+  }
+  @media (min-width: 760px) {
+    .proof__cards {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+</style>

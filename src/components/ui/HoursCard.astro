@@ -1,0 +1,94 @@
+---
+import { hours, openDays } from "../../data/site";
+
+export interface Props {
+  variant?: "card" | "plain";
+  highlight?: boolean;
+}
+const { variant = "card", highlight = true } = Astro.props;
+---
+
+<div class:list={["hours", { "hours--card": variant === "card" }]}>
+  {highlight && (
+    <p class="hours__highlight">
+      <span class="eyebrow">Important</span>
+      Le restaurant est ouvert <strong>vendredi, samedi et dimanche</strong>.
+    </p>
+  )}
+
+  <ul class="hours__list">
+    {hours.map((h) => (
+      <li class:list={["hours__row", { "is-closed": h.closed, "is-open": !h.closed }]}>
+        <span class="hours__day">{h.day}</span>
+        <span class="hours__slots">
+          {h.closed ? "Fermé" : (h.slots ?? []).map((s, i) => (
+            <>
+              {i > 0 && <span class="hours__sep">·</span>}
+              <span>{s}</span>
+            </>
+          ))}
+        </span>
+      </li>
+    ))}
+  </ul>
+</div>
+
+<style>
+  .hours {
+    width: 100%;
+  }
+  .hours--card {
+    background: var(--bg-paper);
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius-lg);
+    padding: clamp(1.25rem, 3vw, 2rem);
+    box-shadow: var(--shadow-sm);
+  }
+  .hours__highlight {
+    margin: 0 0 var(--space-4);
+    font-size: 1rem;
+    color: var(--ink);
+    line-height: 1.45;
+  }
+  .hours__highlight .eyebrow {
+    margin-right: 0.6rem;
+  }
+  .hours__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.45rem;
+  }
+  .hours__row {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: var(--radius-sm);
+    align-items: baseline;
+  }
+  .hours__row.is-open {
+    background: var(--bg-soft);
+  }
+  .hours__row.is-closed {
+    color: var(--ink-mute);
+  }
+  .hours__day {
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .hours__row.is-closed .hours__day {
+    color: var(--ink-mute);
+    font-weight: 500;
+  }
+  .hours__slots {
+    text-align: right;
+    font-variant-numeric: tabular-nums;
+    color: var(--ink);
+  }
+  .hours__sep {
+    margin: 0 0.4rem;
+    color: var(--ink-mute);
+  }
+</style>

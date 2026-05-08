@@ -1,0 +1,84 @@
+---
+import { asset, url } from "../../lib/url";
+import { images } from "../../data/images";
+import SectionHeading from "../ui/SectionHeading.astro";
+---
+
+<section class="section section--paper" id="brunch-tea">
+  <div class="container">
+    <SectionHeading
+      eyebrow="Le dimanche & tous les jours d'ouverture"
+      title="Brunch du dimanche, tea-time et douceurs."
+      lead="Le dimanche, on prend le temps : une grande table végétale, sucrée-salée, de 10h00 à 15h00. Le reste du temps, le comptoir reste ouvert pour un dessert, un thé, un café ou un cookie maison."
+    />
+
+    <div class="brunch-grid">
+      <article class="brunch-card reveal">
+        <img src={asset(images.bowlSucre.file)} alt={images.bowlSucre.alt} loading="lazy" decoding="async" />
+        <div class="brunch-card__body">
+          <h3>Brunch végétalien</h3>
+          <p>
+            Sucré-salé, généreux, à partager. Réservation conseillée — possibilité d'accueillir des groupes pour anniversaires, EVJF ou repas entre proches.
+          </p>
+          <a class="btn btn--ghost" href={url("brunch")}>Voir le brunch</a>
+        </div>
+      </article>
+
+      <article class="brunch-card reveal">
+        <img src={asset(images.bakingCookies.file)} alt={images.bakingCookies.alt} loading="lazy" decoding="async" />
+        <div class="brunch-card__body">
+          <h3>Tea-time & douceurs</h3>
+          <p>
+            Pâtisseries végétales, cookies du jour, gâteaux maison, thés, infusions et cafés. Une halte au comptoir, sans cérémonie.
+          </p>
+          <a class="btn btn--ghost" href={url("carte")}>Voir la carte</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .brunch-grid {
+    display: grid;
+    gap: var(--space-5);
+    grid-template-columns: 1fr;
+  }
+  .brunch-card {
+    background: var(--bg-paper);
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+  }
+  .brunch-card img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+  .brunch-card__body {
+    padding: clamp(1.25rem, 3vw, 1.8rem);
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .brunch-card h3 {
+    margin: 0;
+    font-size: 1.5rem;
+  }
+  .brunch-card p {
+    margin: 0;
+    color: var(--ink-soft);
+  }
+  .brunch-card .btn {
+    align-self: flex-start;
+    margin-top: 0.4rem;
+  }
+  @media (min-width: 760px) {
+    .brunch-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

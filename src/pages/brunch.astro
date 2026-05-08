@@ -1,0 +1,166 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeading from "../components/ui/SectionHeading.astro";
+import GalleryGrid from "../components/ui/GalleryGrid.astro";
+import HoursCard from "../components/ui/HoursCard.astro";
+import GinaMascot from "../components/ui/GinaMascot.astro";
+import { asset } from "../lib/url";
+import { contact } from "../data/site";
+import { images, galleryBrunch } from "../data/images";
+---
+
+<BaseLayout
+  title="Brunch vegan à Dieppe — Les Ursulines"
+  description="Le dimanche, Les Ursulines propose un brunch végétalien fait maison à Dieppe, avec possibilité de réservation et de repas de groupe."
+>
+  <section class="section section--cream">
+    <div class="container container--narrow">
+      <span class="eyebrow">Le dimanche · 10h00 – 15h00</span>
+      <h1>Brunch végétalien à Dieppe.</h1>
+      <p class="lead">
+        Une grande table sucrée-salée, généreuse, faite maison. Le brunch dominical des Ursulines est pensé pour qu'on prenne le temps : entre proches, en famille, ou pour un anniversaire de saison.
+      </p>
+      <div class="cluster">
+        <a class="btn" href={contact.phoneHref}>Réserver — {contact.phone}</a>
+        <a class="btn btn--ghost" href={contact.instagram} target="_blank" rel="noopener noreferrer">Voir le brunch sur Instagram</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--paper">
+    <div class="container">
+      <div class="brunch-hero reveal">
+        <div class="brunch-hero__media">
+          <img src={asset(images.bowlSucre.file)} alt={images.bowlSucre.alt} loading="lazy" decoding="async" />
+        </div>
+        <div class="brunch-hero__copy">
+          <SectionHeading
+            eyebrow="Ambiance"
+            title="Sucré-salé, partagé."
+          />
+          <p>
+            On compose au fil du marché : pancakes végétaux, tartines généreuses, œufs brouillés végétaux, plats du jour, gâteaux maison, boissons chaudes, fraîches, bissap selon la saison.
+          </p>
+          <p>
+            Le menu change — c'est ce qui fait la vie de la maison. Le plus simple, pour anticiper, est d'appeler.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--cream">
+    <div class="container">
+      <div class="brunch-grid">
+        <article class="brunch-block brunch-block--with-gina reveal">
+          <div class="brunch-block__copy">
+            <span class="eyebrow">Pour les groupes</span>
+            <h2>Anniversaire, EVJF, repas entre proches.</h2>
+            <p>
+              Les Ursulines accueille les groupes sur demande, dans une ambiance simple et conviviale. Pas de musique forte, pas de mise en scène : une grande tablée, des assiettes généreuses, le temps qu'il faut.
+            </p>
+            <a class="btn btn--warm" href={contact.phoneHref}>Réserver pour un groupe</a>
+          </div>
+          <GinaMascot
+            variant="birthday-profile"
+            size="sm"
+            caption="Gina aime les anniversaires."
+            class="brunch-block__gina"
+          />
+        </article>
+        <article class="brunch-block reveal">
+          <span class="eyebrow">Réservation</span>
+          <h2>Comment réserver ?</h2>
+          <p>
+            Le téléphone reste le moyen le plus rapide : on note avec vous l'heure, le nombre de couverts et les régimes éventuels. Vous pouvez aussi nous écrire via la page contact.
+          </p>
+          <p class="brunch-block__note">
+            Le service du dimanche se remplit vite — mieux vaut réserver à l'avance, surtout en week-end de pont ou de marché.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Aperçu"
+        title="Quelques images de brunchs passés."
+        align="center"
+      />
+      <GalleryGrid items={galleryBrunch} columns={3} ratio="square" />
+    </div>
+  </section>
+
+  <section class="section section--cream">
+    <div class="container container--narrow">
+      <SectionHeading
+        eyebrow="Avant de venir"
+        title="Horaires"
+      />
+      <HoursCard />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .lead {
+    font-size: var(--fs-lead);
+    color: var(--ink-soft);
+  }
+  .brunch-hero {
+    display: grid;
+    gap: var(--space-7);
+  }
+  .brunch-hero__media {
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+  }
+  .brunch-hero__media img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+  }
+  @media (min-width: 820px) {
+    .brunch-hero {
+      grid-template-columns: 1.1fr 1fr;
+      align-items: center;
+    }
+  }
+  .brunch-grid {
+    display: grid;
+    gap: var(--space-5);
+  }
+  .brunch-block {
+    padding: clamp(1.5rem, 3vw, 2rem);
+    background: var(--bg-paper);
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+  }
+  .brunch-block--with-gina {
+    display: grid;
+    gap: var(--space-5);
+    align-items: center;
+  }
+  @media (min-width: 520px) {
+    .brunch-block--with-gina {
+      grid-template-columns: 1fr auto;
+    }
+  }
+  .brunch-block__gina {
+    justify-self: end;
+  }
+  .brunch-block__note {
+    font-family: var(--font-script);
+    color: var(--olive-deep);
+    font-size: var(--fs-script-md);
+  }
+  @media (min-width: 760px) {
+    .brunch-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

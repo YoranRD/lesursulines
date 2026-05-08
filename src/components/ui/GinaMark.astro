@@ -1,0 +1,46 @@
+---
+/**
+ * Gina — pictogramme line-art sobre, inspiré du bouledogue français.
+ * Pas de photo IA réaliste. Détail de marque discret.
+ */
+export interface Props {
+  size?: number;
+  label?: string;
+}
+const { size = 56, label = "Gina, mascotte des Ursulines" } = Astro.props;
+---
+
+<svg
+  class="gina"
+  width={size}
+  height={size}
+  viewBox="0 0 64 64"
+  fill="none"
+  stroke="currentColor"
+  stroke-width="1.6"
+  stroke-linecap="round"
+  stroke-linejoin="round"
+  role="img"
+  aria-label={label}
+>
+  <!-- tête -->
+  <path d="M14 30c0-9 8-16 18-16s18 7 18 16c0 7-4 12-9 14-2 1-3 4-3 6H26c0-2-1-5-3-6-5-2-9-7-9-14z" />
+  <!-- oreilles -->
+  <path d="M16 22c-2-3-2-7 0-9 3 0 6 3 7 7" />
+  <path d="M48 22c2-3 2-7 0-9-3 0-6 3-7 7" />
+  <!-- yeux -->
+  <circle cx="25" cy="32" r="1.2" fill="currentColor" stroke="none" />
+  <circle cx="39" cy="32" r="1.2" fill="currentColor" stroke="none" />
+  <!-- museau -->
+  <path d="M28 38c1 2 3 3 4 3s3-1 4-3" />
+  <path d="M32 38v3" />
+  <!-- pli front -->
+  <path d="M27 26c2 1 3 1 5 1s3 0 5-1" />
+</svg>
+
+<style>
+  .gina {
+    color: var(--olive-deep);
+    flex-shrink: 0;
+  }
+</style>

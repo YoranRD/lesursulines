@@ -1,0 +1,132 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeading from "../components/ui/SectionHeading.astro";
+import GinaMascot from "../components/ui/GinaMascot.astro";
+import { contact } from "../data/site";
+import { url } from "../lib/url";
+---
+
+<BaseLayout
+  title="Boutique végétale — Les Ursulines Dieppe"
+  description="La boutique des Ursulines prépare ses produits végétaux, gâteaux maison et futures options de commande à Dieppe."
+>
+  <section class="section section--cream">
+    <div class="container container--narrow">
+      <div class="boutique-hero">
+        <div>
+          <span class="eyebrow">Bientôt</span>
+          <h1>La boutique des Ursulines arrive bientôt.</h1>
+          <p class="lead">
+            Une petite sélection végétale en préparation : gâteaux à commander, pâtisseries, sélection d'épicerie locale, et un futur click-and-collect pour ne pas attendre sur place.
+          </p>
+          <p>
+            Pour le moment, les commandes spéciales — gâteau d'anniversaire, pâtisserie pour un repas — passent directement par téléphone. On en discute avec vous, simplement.
+          </p>
+          <div class="cluster">
+            <a class="btn" href={contact.phoneHref}>Appeler pour une commande</a>
+            <a class="btn btn--ghost" href={url("contact")}>Page contact</a>
+          </div>
+        </div>
+        <GinaMascot
+          variant="cake"
+          size="md"
+          caption="Gina goûte (presque) tous les gâteaux."
+          class="boutique-hero__gina"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--paper">
+    <div class="container">
+      <SectionHeading
+        eyebrow="En préparation"
+        title="Ce qu'on imagine pour la boutique."
+        lead="Aucune des options ci-dessous n'est encore active. Cette page est un repère, pour qu'on se rappelle où on va."
+      />
+      <ul class="boutique-list">
+        <li>
+          <h3>Gâteaux à commander</h3>
+          <p>Anniversaires, événements de famille ou de bureau — pâtisseries végétales sur demande.</p>
+          <span class="badge">Sur demande, par téléphone</span>
+        </li>
+        <li>
+          <h3>Pâtisseries du jour</h3>
+          <p>Cookies, brioches, gâteaux du comptoir, à emporter quand le service le permet.</p>
+          <span class="badge">À venir</span>
+        </li>
+        <li>
+          <h3>Sélection d'épicerie locale</h3>
+          <p>Quelques produits qu'on aime, choisis avec soin auprès de productrices et producteurs proches.</p>
+          <span class="badge">À venir</span>
+        </li>
+        <li>
+          <h3>Click-and-collect</h3>
+          <p>Commander en avance sur le site, récupérer sur place. En cours de réflexion.</p>
+          <span class="badge">À l'étude</span>
+        </li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .lead {
+    font-size: var(--fs-lead);
+    color: var(--ink-soft);
+  }
+  .boutique-hero {
+    display: grid;
+    gap: var(--space-6);
+    align-items: center;
+  }
+  .boutique-hero__gina {
+    justify-self: center;
+  }
+  @media (min-width: 720px) {
+    .boutique-hero {
+      grid-template-columns: 1fr auto;
+      gap: var(--space-7);
+    }
+    .boutique-hero__gina {
+      justify-self: end;
+    }
+  }
+  .boutique-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: var(--space-4);
+  }
+  .boutique-list li {
+    padding: clamp(1.25rem, 3vw, 1.8rem);
+    background: var(--bg-paper);
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+  }
+  .boutique-list h3 {
+    margin: 0 0 0.3rem;
+    font-size: 1.3rem;
+  }
+  .boutique-list p {
+    margin: 0 0 0.6rem;
+    color: var(--ink-soft);
+  }
+  .badge {
+    display: inline-block;
+    padding: 0.3rem 0.7rem;
+    background: var(--bg-soft);
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius-pill);
+    font-family: var(--font-script);
+    color: var(--terracotta);
+    font-size: 1rem;
+  }
+  @media (min-width: 720px) {
+    .boutique-list {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

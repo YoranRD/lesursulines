@@ -1,0 +1,60 @@
+---
+import HoursCard from "../ui/HoursCard.astro";
+import ContactCard from "../ui/ContactCard.astro";
+import SectionHeading from "../ui/SectionHeading.astro";
+---
+
+<section class="section section--soft" id="horaires">
+  <div class="container">
+    <div class="hours-section">
+      <div class="hours-section__intro reveal">
+        <SectionHeading
+          eyebrow="Avant de venir"
+          title="Horaires & contact"
+          lead="Nous ouvrons trois jours par semaine, vendredi, samedi et dimanche. La meilleure façon d'être sûr d'une place est d'appeler."
+        />
+        <p class="hours-section__note">
+          Le menu du jour change : pour le découvrir, retrouvez-nous sur Instagram <a href="https://www.instagram.com/les.ursulines/" target="_blank" rel="noopener noreferrer">@les.ursulines</a> ou appelez-nous directement.
+        </p>
+      </div>
+      <div class="hours-section__grid">
+        <div class="reveal"><HoursCard /></div>
+        <div class="reveal"><ContactCard /></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .hours-section {
+    display: grid;
+    gap: var(--space-7);
+  }
+  .hours-section__intro {
+    max-width: 62ch;
+  }
+  .hours-section__note {
+    font-size: 1rem;
+    color: var(--ink-soft);
+    margin: var(--space-4) 0 0;
+  }
+  .hours-section__grid {
+    display: grid;
+    gap: var(--space-5);
+    grid-template-columns: 1fr;
+  }
+  @media (min-width: 760px) {
+    .hours-section {
+      grid-template-columns: 1fr 1.1fr;
+      align-items: start;
+    }
+    .hours-section__grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  @media (min-width: 1000px) {
+    .hours-section {
+      grid-template-columns: 1fr 1.4fr;
+    }
+  }
+</style>

@@ -1,0 +1,220 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeading from "../components/ui/SectionHeading.astro";
+import GalleryGrid from "../components/ui/GalleryGrid.astro";
+import GinaMark from "../components/ui/GinaMark.astro";
+import GinaMascot from "../components/ui/GinaMascot.astro";
+import { asset, url } from "../lib/url";
+import { contact, team } from "../data/site";
+import { images, galleryAbout } from "../data/images";
+---
+
+<BaseLayout
+  title="À propos — Les Ursulines, comptoir végétalien à Dieppe"
+  description="Découvrez l'histoire des Ursulines, un comptoir végétalien à bulles et à culture fondé autour de la cuisine maison, de l'accueil et du respect du vivant."
+>
+  <section class="section section--cream">
+    <div class="container container--narrow">
+      <span class="eyebrow">Le lieu</span>
+      <h1>Comptoir végétalien à bulles et à culture.</h1>
+      <p class="lead">
+        Les Ursulines est un restaurant végétalien fait maison, ouvert sur le port de Dieppe. Une table simple et chaleureuse, pensée pour qu'on s'y sente bien — qu'on soit vegan, curieux, de passage ou habitué.
+      </p>
+    </div>
+  </section>
+
+  <section class="section section--paper">
+    <div class="container">
+      <div class="about-team">
+        <article class="about-card reveal">
+          <h2>{team.chef.name}</h2>
+          <p class="about-card__role">{team.chef.role}</p>
+          <p>
+            Frédérique cuisine. Au quotidien, elle compose les plats du jour selon le marché, prépare les desserts, les pains, les cookies, les gâteaux. Un travail patient, généreux, sans raccourcis industriels.
+          </p>
+        </article>
+        <article class="about-card reveal">
+          <h2>{team.host.name}</h2>
+          <p class="about-card__role">{team.host.role}</p>
+          <p>
+            Delphine accueille. Direction artistique, salle, attention aux gens. C'est elle qui donne au lieu sa couleur, ses détails, son rythme — et qui veille à ce que chacun y trouve sa place.
+          </p>
+        </article>
+        <article class="about-card about-card--gina reveal">
+          <span class="about-card__mark"><GinaMark size={56} /></span>
+          <h2>{team.mascot.name}</h2>
+          <p class="about-card__role">{team.mascot.role}</p>
+          <p>
+            Petite bouledogue française noire, observatrice attentive de tout ce qui tombe sous la table. Mascotte affective des Ursulines, elle se fait discrète mais reste très présente.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--tea" id="gina">
+    <div class="container">
+      <div class="about-gina">
+        <div class="about-gina__mascot reveal">
+          <GinaMascot
+            variant="main"
+            size="lg"
+            caption="Gina, mascotte de la maison."
+          />
+        </div>
+        <div class="about-gina__copy reveal">
+          <SectionHeading
+            eyebrow="Le fil rouge"
+            title="Gina, la mascotte de la maison."
+          />
+          <p>
+            Petite bouledogue française noire, Gina fait partie de l'ambiance des Ursulines. Les habitués la connaissent bien : elle observe, accueille et rappelle que la maison aime les présences simples et vivantes.
+          </p>
+          <p>
+            Vous la croiserez peut-être en salle, posée près d'une chaise, ou à l'écart sur son coussin. Discrète, jamais imposante — juste là, comme un détail vivant du lieu.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="container">
+      <div class="about-values">
+        <div class="reveal">
+          <SectionHeading
+            eyebrow="Ce qu'on aime"
+            title="Cuisine végétale, culture, accueil."
+          />
+          <p>
+            Les Ursulines réunit ce que ses fondatrices aiment : une cuisine végétale faite maison, le rythme du marché, le respect du vivant, la culture, l'ouverture aux autres. Pas de discours militant, pas de raccourcis : un lieu où l'on peut venir manger, discuter, lire, s'arrêter.
+          </p>
+          <p>
+            Manger végétal, ici, n'est pas une condition d'entrée. C'est une invitation : à goûter, à découvrir, à se sentir bien. Tous sont bienvenus, vegan ou non.
+          </p>
+        </div>
+        <div class="reveal">
+          <img src={asset(images.facade.file)} alt={images.facade.alt} loading="lazy" decoding="async" class="about-image" />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--cream">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Quelques images"
+        title="Façade, cuisine, table."
+        align="center"
+      />
+      <GalleryGrid items={galleryAbout} columns={3} ratio="square" />
+    </div>
+  </section>
+
+  <section class="section section--charcoal">
+    <div class="container container--narrow about-cta">
+      <h2>Venir aux Ursulines</h2>
+      <p>129 Quai Henri IV, 76200 Dieppe — au plus simple, le téléphone.</p>
+      <div class="cluster">
+        <a class="btn btn--warm" href={contact.phoneHref}>Appeler {contact.phone}</a>
+        <a class="btn btn--ghost" href={url("contact")}>Page contact</a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .lead {
+    font-size: var(--fs-lead);
+    color: var(--ink-soft);
+  }
+  .about-team {
+    display: grid;
+    gap: var(--space-5);
+  }
+  .about-card {
+    position: relative;
+    padding: clamp(1.5rem, 3vw, 2rem);
+    background: var(--bg-paper);
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+  }
+  .about-card h2 {
+    margin: 0 0 0.2rem;
+    font-size: 1.6rem;
+  }
+  .about-card__role {
+    font-family: var(--font-script);
+    color: var(--terracotta);
+    font-size: var(--fs-script-md);
+    margin: 0 0 var(--space-3);
+  }
+  .about-card p {
+    color: var(--ink-soft);
+    margin: 0;
+  }
+  .about-card--gina {
+    background: linear-gradient(160deg, var(--bg-paper) 0%, var(--bg-soft) 100%);
+  }
+  .about-card__mark {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    color: var(--olive-deep);
+  }
+  @media (min-width: 760px) {
+    .about-team {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .about-gina {
+    display: grid;
+    gap: var(--space-6);
+    align-items: center;
+  }
+  .about-gina__mascot {
+    display: flex;
+    justify-content: center;
+  }
+  @media (min-width: 720px) {
+    .about-gina {
+      grid-template-columns: auto 1fr;
+      gap: var(--space-8);
+    }
+    .about-gina__mascot {
+      justify-content: flex-start;
+    }
+  }
+
+  .about-values {
+    display: grid;
+    gap: var(--space-7);
+    align-items: center;
+  }
+  .about-image {
+    width: 100%;
+    border-radius: var(--radius-xl);
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    box-shadow: var(--shadow-md);
+  }
+  @media (min-width: 820px) {
+    .about-values {
+      grid-template-columns: 1.1fr 0.9fr;
+    }
+  }
+
+  .about-cta {
+    text-align: center;
+  }
+  .about-cta .cluster {
+    justify-content: center;
+    margin-top: var(--space-4);
+  }
+  .about-cta .btn--ghost {
+    color: var(--bg-cream);
+    border-color: rgba(244, 233, 224, 0.4);
+  }
+</style>

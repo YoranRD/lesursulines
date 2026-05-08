@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://yoranrd.github.io/lesursulines/sitemap-index.xml

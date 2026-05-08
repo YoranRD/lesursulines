@@ -1,0 +1,66 @@
+---
+import { googleReview } from "../../data/site";
+
+export interface Props {
+  variant?: "inline" | "block";
+}
+const { variant = "block" } = Astro.props;
+
+const stars = Math.round(googleReview.rating);
+---
+
+<div class:list={["review", `review--${variant}`]}>
+  <div class="review__stars" aria-hidden="true">
+    {[...Array(5)].map((_, i) => (
+      <svg viewBox="0 0 24 24" class:list={["review__star", { "is-on": i < stars }]} aria-hidden="true">
+        <path d="M12 2l2.92 6.34L22 9.27l-5 5.05L18.18 22 12 18.27 5.82 22 7 14.32l-5-5.05 7.08-.93L12 2z" />
+      </svg>
+    ))}
+  </div>
+  <p class="review__text">
+    <span class="review__rating">{googleReview.rating.toString().replace(".", ",")}/5</span>
+    <span class="review__count">— {googleReview.count} avis {googleReview.source}</span>
+  </p>
+</div>
+
+<style>
+  .review {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.55rem 0.95rem;
+    background: var(--bg-paper);
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius-pill);
+    box-shadow: var(--shadow-sm);
+  }
+  .review--block {
+    padding: 0.85rem 1.2rem;
+  }
+  .review__stars {
+    display: inline-flex;
+    gap: 1px;
+  }
+  .review__star {
+    width: 18px;
+    height: 18px;
+    fill: var(--line);
+  }
+  .review__star.is-on {
+    fill: var(--terracotta);
+  }
+  .review__text {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--ink);
+  }
+  .review__rating {
+    font-weight: 700;
+    font-family: var(--font-serif);
+    font-size: 1.1rem;
+    margin-right: 0.25rem;
+  }
+  .review__count {
+    color: var(--ink-soft);
+  }
+</style>

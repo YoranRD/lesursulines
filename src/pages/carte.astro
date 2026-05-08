@@ -1,0 +1,236 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import SectionHeading from "../components/ui/SectionHeading.astro";
+import HoursCard from "../components/ui/HoursCard.astro";
+import ContactCard from "../components/ui/ContactCard.astro";
+import GinaMascot from "../components/ui/GinaMascot.astro";
+import { asset, url } from "../lib/url";
+import { contact } from "../data/site";
+import { menuStructure, menuGuidelines, priceHint } from "../data/menu";
+import { carteImages, images } from "../data/images";
+---
+
+<BaseLayout
+  title="Carte & menu du jour — Les Ursulines, restaurant vegan à Dieppe"
+  description="Découvrez le fonctionnement de la carte des Ursulines : plats végétaliens du jour, desserts maison, boissons, tea-time et menu annoncé sur Instagram."
+>
+  <section class="section section--cream">
+    <div class="container container--narrow">
+      <span class="eyebrow">La carte</span>
+      <h1>Une carte vivante, faite maison.</h1>
+      <p class="lead">
+        Les vrais plats changent au rythme du marché et des saisons. Plutôt que de figer une carte, on vous explique comment ça se passe — et comment connaître l'ardoise du jour.
+      </p>
+      <ul class="guidelines">
+        {menuGuidelines.map((g) => <li>{g}</li>)}
+      </ul>
+      <div class="cluster">
+        <a class="btn" href={contact.instagram} target="_blank" rel="noopener noreferrer">Voir le menu du jour sur Instagram</a>
+        <a class="btn btn--ghost" href={contact.phoneHref}>Appeler</a>
+      </div>
+      <p class="price-hint">{priceHint}</p>
+    </div>
+  </section>
+
+  <section class="section section--paper">
+    <div class="container">
+      <div class="carte-grid">
+        {menuStructure.map((bloc) => (
+          <article class="carte-card reveal" id={bloc.id}>
+            <span class="eyebrow">{bloc.eyebrow}</span>
+            <h2>{bloc.title}</h2>
+            <p>{bloc.description}</p>
+            {bloc.note && <p class="carte-card__note">{bloc.note}</p>}
+            {bloc.id === "desserts" && (
+              <div class="carte-card__gina">
+                <GinaMascot variant="cake" size="sm" decorative={true} />
+              </div>
+            )}
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--soft">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Carte indicative"
+        title="Boissons, tea-time et douceurs."
+        lead="Cette carte est plus stable et donne une idée de ce qu'on retrouve souvent au comptoir. Les desserts du jour et les plats salés évoluent — Instagram reste le meilleur endroit pour le voir."
+      />
+      <div class="carte-image-block">
+        <figure class="carte-image-block__figure reveal">
+          <img src={asset(carteImages.drinks.file)} alt={carteImages.drinks.alt} loading="lazy" decoding="async" />
+          <figcaption>Carte indicative des boissons et douceurs.</figcaption>
+        </figure>
+        <div class="carte-image-block__legend-wrap">
+          <ul class="carte-image-block__legend">
+            <li>Cafés, expressos, lattés végétaux</li>
+            <li>Thés, infusions et chaï</li>
+            <li>Boissons fraîches et bissap maison selon saison</li>
+            <li>Pâtisseries végétales, cookies, gâteaux du jour</li>
+            <li>Plats du jour : voir Instagram ou nous appeler</li>
+          </ul>
+          <GinaMascot
+            variant="tea"
+            size="sm"
+            caption="Gina aime l'heure du thé."
+            class="carte-image-block__gina"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--cream">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Avant de venir"
+        title="Horaires et contact"
+      />
+      <div class="carte-bottom">
+        <HoursCard />
+        <ContactCard />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .lead {
+    font-size: var(--fs-lead);
+    color: var(--ink-soft);
+  }
+  .guidelines {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-5) 0;
+    display: grid;
+    gap: 0.5rem;
+  }
+  .guidelines li {
+    padding-left: 1.4rem;
+    position: relative;
+    color: var(--ink);
+  }
+  .guidelines li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.65rem;
+    width: 8px;
+    height: 8px;
+    background: var(--olive);
+    border-radius: 50%;
+  }
+  .price-hint {
+    font-family: var(--font-script);
+    font-size: var(--fs-script-md);
+    color: var(--olive-deep);
+    margin-top: var(--space-4);
+  }
+
+  .carte-grid {
+    display: grid;
+    gap: var(--space-5);
+    grid-template-columns: 1fr;
+  }
+  .carte-card {
+    padding: clamp(1.5rem, 3vw, 2.2rem);
+    background: var(--bg-paper);
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-sm);
+  }
+  .carte-card h2 {
+    margin-top: 0.4rem;
+    font-size: 1.6rem;
+  }
+  .carte-card p {
+    margin: 0.5rem 0;
+    color: var(--ink-soft);
+  }
+  .carte-card__note {
+    color: var(--ink);
+    border-left: 3px solid var(--terracotta);
+    padding-left: 0.75rem;
+    margin-top: var(--space-3);
+  }
+  .carte-card__gina {
+    margin-top: var(--space-4);
+    display: flex;
+    justify-content: flex-end;
+  }
+  @media (min-width: 720px) {
+    .carte-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+    .carte-card:first-child {
+      grid-column: 1 / -1;
+    }
+  }
+
+  .carte-image-block {
+    display: grid;
+    gap: var(--space-6);
+  }
+  .carte-image-block__figure {
+    margin: 0;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    background: var(--bg-paper);
+  }
+  .carte-image-block__figure img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  .carte-image-block__figure figcaption {
+    text-align: center;
+    padding: 0.7rem;
+    font-family: var(--font-script);
+    color: var(--olive-deep);
+    font-size: var(--fs-script-md);
+    background: var(--bg-paper);
+  }
+  .carte-image-block__legend-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-5);
+  }
+  .carte-image-block__legend {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 0.6rem;
+  }
+  .carte-image-block__legend li {
+    padding: 0.65rem 0.9rem;
+    background: var(--bg-paper);
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius-md);
+    color: var(--ink);
+  }
+  .carte-image-block__gina {
+    align-self: flex-end;
+  }
+  @media (min-width: 820px) {
+    .carte-image-block {
+      grid-template-columns: 1.1fr 1fr;
+      align-items: start;
+    }
+  }
+
+  .carte-bottom {
+    display: grid;
+    gap: var(--space-5);
+  }
+  @media (min-width: 760px) {
+    .carte-bottom {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>
