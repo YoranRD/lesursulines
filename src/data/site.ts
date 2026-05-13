@@ -116,11 +116,11 @@ export const team = {
   },
   host: {
     name: "Delphine Chevalme",
-    role: "Direction artistique, et accueil",
+    role: "Direction artistique et service",
   },
   mascot: {
     name: "Gina",
-    role: "Petite bouledogue française — directrice secrète du lieu",
+    role: "Directrice secrète du lieu",
   },
 } as const;
 
