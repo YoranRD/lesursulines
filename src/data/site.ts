@@ -120,7 +120,7 @@ export const team = {
   },
   mascot: {
     name: "Gina",
-    role: "Petite bouledogue française — directrice secrête du lieu",
+    role: "Petite bouledogue française — directrice secrète du lieu",
   },
 } as const;
 

@@ -7,7 +7,7 @@
 export type LocalImage = {
   file: string;
   alt: string;
-  category: "facade" | "plat" | "dessert" | "menu" | "logo" | "context" | "epicerie" | "mascot";
+  category: "facade" | "plat" | "dessert" | "menu" | "logo" | "context" | "epicerie" | "mascot" | "team";
   width?: number;
   height?: number;
 };
@@ -123,6 +123,16 @@ export const images: Record<string, LocalImage> = {
     alt: "Plat maison vegan aux Ursulines.",
     category: "plat",
   },
+  frederique: {
+    file: "images/team/frederique-diarra.webp",
+    alt: "Portrait de Frédérique Diarra, cheffe des Ursulines.",
+    category: "team",
+  },
+  delphine: {
+    file: "images/team/delphine-chevalme.webp",
+    alt: "Portrait de Delphine Chevalme, direction artistique et accueil des Ursulines.",
+    category: "team",
+  },
 };
 
 // Sélections par usage
@@ -157,7 +167,15 @@ export const galleryBrunch = [
 
 export const carteImages = {
   hero: images.plat2,
+  concept: images.horairesConcept,
   drinks: images.menuHorsPlats,
   desserts: images.dessert2,
   cookies: images.bakingCookies,
+};
+
+export const menuCategoryImages: Record<string, typeof images[string]> = {
+  "plats-du-jour": images.plat8,
+  desserts: images.dessert2,
+  boissons: images.epicerie,
+  brunch: images.bowlSucre,
 };

@@ -7,7 +7,7 @@ import GinaMascot from "../components/ui/GinaMascot.astro";
 import { asset, url } from "../lib/url";
 import { contact } from "../data/site";
 import { menuStructure, menuGuidelines, priceHint } from "../data/menu";
-import { carteImages, images } from "../data/images";
+import { carteImages, menuCategoryImages } from "../data/images";
 ---
 
 <BaseLayout
@@ -15,39 +15,66 @@ import { carteImages, images } from "../data/images";
   description="Découvrez le fonctionnement de la carte des Ursulines : plats végétaliens du jour, desserts maison, boissons, tea-time et menu annoncé sur Instagram."
 >
   <section class="section section--cream">
-    <div class="container container--narrow">
-      <span class="eyebrow">La carte</span>
-      <h1>Une carte vivante, faite maison.</h1>
-      <p class="lead">
-        Les vrais plats changent au rythme du marché et des saisons. Plutôt que de figer une carte, on vous explique comment ça se passe — et comment connaître l'ardoise du jour.
-      </p>
-      <ul class="guidelines">
-        {menuGuidelines.map((g) => <li>{g}</li>)}
-      </ul>
-      <div class="cluster">
-        <a class="btn" href={contact.instagram} target="_blank" rel="noopener noreferrer">Voir le menu du jour sur Instagram</a>
-        <a class="btn btn--ghost" href={contact.phoneHref}>Appeler</a>
+    <div class="container">
+      <div class="carte-intro">
+        <div class="carte-intro__copy reveal">
+          <span class="eyebrow">La carte</span>
+          <h1>Une carte vivante, faite maison.</h1>
+          <p class="lead">
+            Les vrais plats changent au rythme du marché et des saisons. Plutôt que de figer une carte, on vous explique comment ça se passe — et comment connaître l'ardoise du jour.
+          </p>
+          <ul class="guidelines">
+            {menuGuidelines.map((g) => <li>{g}</li>)}
+          </ul>
+          <div class="cluster">
+            <a class="btn" href={contact.instagram} target="_blank" rel="noopener noreferrer">Voir le menu du jour sur Instagram</a>
+            <a class="btn btn--ghost" href={contact.phoneHref}>Appeler</a>
+          </div>
+          <p class="price-hint">{priceHint}</p>
+        </div>
+        <figure class="carte-intro__figure reveal">
+          <img
+            src={asset(carteImages.concept.file)}
+            alt={carteImages.concept.alt}
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
       </div>
-      <p class="price-hint">{priceHint}</p>
     </div>
   </section>
 
   <section class="section section--paper">
     <div class="container">
       <div class="carte-grid">
-        {menuStructure.map((bloc) => (
-          <article class="carte-card reveal" id={bloc.id}>
-            <span class="eyebrow">{bloc.eyebrow}</span>
-            <h2>{bloc.title}</h2>
-            <p>{bloc.description}</p>
-            {bloc.note && <p class="carte-card__note">{bloc.note}</p>}
-            {bloc.id === "desserts" && (
-              <div class="carte-card__gina">
-                <GinaMascot variant="cake" size="sm" decorative={true} />
+        {menuStructure.map((bloc) => {
+          const img = menuCategoryImages[bloc.id];
+          return (
+            <article class="carte-card reveal" id={bloc.id}>
+              {img && (
+                <figure class="carte-card__media">
+                  <img
+                    src={asset(img.file)}
+                    alt={img.alt}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+              )}
+              <div class="carte-card__body">
+                <span class="eyebrow">{bloc.eyebrow}</span>
+                <h2>{bloc.title}</h2>
+                <p>{bloc.description}</p>
+                {bloc.note && <p class="carte-card__note">{bloc.note}</p>}
+                {bloc.id === "desserts" && (
+                  <div class="carte-card__gina">
+                    <GinaMascot variant="cake" size="sm" decorative={true} />
+                  </div>
+                )}
               </div>
-            )}
-          </article>
-        ))}
+            </article>
+          );
+        })}
       </div>
     </div>
   </section>
@@ -102,6 +129,39 @@ import { carteImages, images } from "../data/images";
     font-size: var(--fs-lead);
     color: var(--ink-soft);
   }
+
+  .carte-intro {
+    display: grid;
+    gap: var(--space-6);
+    align-items: center;
+  }
+  .carte-intro__copy {
+    max-width: 62ch;
+  }
+  .carte-intro__figure {
+    margin: 0;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    background: var(--bg-paper);
+  }
+  .carte-intro__figure img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+  }
+  @media (min-width: 880px) {
+    .carte-intro {
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: var(--space-8);
+    }
+    .carte-intro__figure img {
+      aspect-ratio: 4 / 5;
+    }
+  }
+
   .guidelines {
     list-style: none;
     padding: 0;
@@ -137,11 +197,32 @@ import { carteImages, images } from "../data/images";
     grid-template-columns: 1fr;
   }
   .carte-card {
-    padding: clamp(1.5rem, 3vw, 2.2rem);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
     background: var(--bg-paper);
     border: 1px solid var(--line-soft);
     border-radius: var(--radius-xl);
     box-shadow: var(--shadow-sm);
+  }
+  .carte-card__media {
+    margin: 0;
+    overflow: hidden;
+    background: var(--bg-soft);
+  }
+  .carte-card__media img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 16 / 10;
+    object-fit: cover;
+    display: block;
+    transition: transform var(--t-slow) var(--ease);
+  }
+  .carte-card:hover .carte-card__media img {
+    transform: scale(1.02);
+  }
+  .carte-card__body {
+    padding: clamp(1.5rem, 3vw, 2.2rem);
   }
   .carte-card h2 {
     margin-top: 0.4rem;
@@ -168,6 +249,25 @@ import { carteImages, images } from "../data/images";
     }
     .carte-card:first-child {
       grid-column: 1 / -1;
+      flex-direction: row;
+    }
+    .carte-card:first-child .carte-card__media {
+      flex: 1 1 0;
+      min-width: 0;
+    }
+    .carte-card:first-child .carte-card__media img {
+      height: 100%;
+      aspect-ratio: auto;
+    }
+    .carte-card:first-child .carte-card__body {
+      flex: 1 1 0;
+      min-width: 0;
+      align-self: center;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .carte-card:hover .carte-card__media img {
+      transform: none;
     }
   }
 

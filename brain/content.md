@@ -150,7 +150,7 @@ Microcopy validés (à réutiliser tels quels) :
 - « Gina, directrice de la maison. » — page À propos.
 
 Texte long (page À propos) :
-> Petite bouledogue française noire, Gina fait partie de l’ambiance des Ursulines. Les habitués la connaissent bien : elle observe, accueille et rappelle que la maison aime les présences simples et vivantes.
+> Petite bouledogue française, Gina fait partie de l’ambiance des Ursulines. Les habitués la connaissent bien : elle observe, accueille et rappelle que la maison aime les présences simples et vivantes.
 
 Limites :
 - ne pas placer Gina dans le hero principal ;

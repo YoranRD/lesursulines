@@ -41,7 +41,7 @@ export const journalIdeas: JournalIdea[] = [
     status: "à venir",
   },
   {
-    title: "Gina, directrice secrête des Ursulines",
+    title: "Gina, directrice secrète des Ursulines",
     excerpt:
       "Petit portrait de Gina, bouledogue française, observatrice attentive de tout ce qui tombe sous la table.",
     category: "Le lieu",

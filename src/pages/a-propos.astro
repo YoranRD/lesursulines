@@ -2,7 +2,6 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionHeading from "../components/ui/SectionHeading.astro";
 import GalleryGrid from "../components/ui/GalleryGrid.astro";
-import GinaMark from "../components/ui/GinaMark.astro";
 import GinaMascot from "../components/ui/GinaMascot.astro";
 import { asset, url } from "../lib/url";
 import { contact, team } from "../data/site";
@@ -14,61 +13,95 @@ import { images, galleryAbout } from "../data/images";
   description="Découvrez l'histoire des Ursulines, un comptoir végétalien à bulles et à culture fondé autour de la cuisine maison, de l'accueil et du respect du vivant."
 >
   <section class="section section--cream">
-    <div class="container container--narrow">
-      <span class="eyebrow">Le lieu</span>
-      <h1>Comptoir végétalien à bulles et à culture.</h1>
-      <p class="lead">
-        Les Ursulines est un restaurant végétalien fait maison, ouvert sur le port de Dieppe. Une table simple et chaleureuse, pensée pour qu'on s'y sente bien — qu'on soit vegan, curieux, de passage ou habitué.
-      </p>
+    <div class="container">
+      <div class="about-intro">
+        <div class="about-intro__copy reveal">
+          <span class="eyebrow">Le lieu</span>
+          <h1>Comptoir végétalien à bulles et à culture.</h1>
+          <p class="lead">
+            Les Ursulines est un restaurant végétalien fait maison, ouvert sur le port de Dieppe. Une table simple et chaleureuse, pensée pour qu'on s'y sente bien — qu'on soit vegan, curieux, de passage ou habitué.
+          </p>
+        </div>
+        <figure class="about-intro__figure reveal">
+          <img
+            src={asset(images.facade2.file)}
+            alt="Façade des Ursulines à Dieppe."
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+      </div>
     </div>
   </section>
 
-  <section class="section section--paper">
+  <section class="section section--paper" id="frederique">
     <div class="container">
-      <div class="about-team">
-        <article class="about-card reveal">
-          <h2>{team.chef.name}</h2>
-          <p class="about-card__role">{team.chef.role}</p>
+      <div class="about-person about-person--reverse">
+        <div class="about-person__portrait reveal">
+          <img
+            src={asset(images.frederique.file)}
+            alt="Portrait de Frédérique Diarra"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="about-person__copy reveal">
+          <SectionHeading
+            eyebrow="La cheffe"
+            title={team.chef.name}
+          />
+          <p class="about-person__role">{team.chef.role}</p>
           <p>
             Frédérique cuisine. Au quotidien, elle compose les plats du jour selon le marché, prépare les desserts, les pains, les cookies, les gâteaux. Un travail patient, généreux, sans raccourcis industriels.
           </p>
-        </article>
-        <article class="about-card reveal">
-          <h2>{team.host.name}</h2>
-          <p class="about-card__role">{team.host.role}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--soft" id="delphine">
+    <div class="container">
+      <div class="about-person">
+        <div class="about-person__portrait reveal">
+          <img
+            src={asset(images.delphine.file)}
+            alt="Portrait de Delphine Chevalme"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+        <div class="about-person__copy reveal">
+          <SectionHeading
+            eyebrow="Direction artistique"
+            title={team.host.name}
+          />
+          <p class="about-person__role">{team.host.role}</p>
           <p>
-            Delphine est au coeur de la direction artistique du lieu ! C'est elle qui donne au lieu sa couleur, ses détails, son rythme — et qui veille à ce que chacun y trouve sa place.
+            Delphine est au coeur de la direction artistique du lieu. C'est elle qui lui donne sa couleur, ses détails, son rythme — et qui veille à ce que chacun y trouve sa place.
           </p>
-        </article>
-        <article class="about-card about-card--gina reveal">
-          <span class="about-card__mark"><GinaMark size={56} /></span>
-          <h2>{team.mascot.name}</h2>
-          <p class="about-card__role">{team.mascot.role}</p>
-          <p>
-            Petite bouledogue française, observatrice attentive de tout ce qui tombe sous la table. C'est en fait la directrice secrête des lieux. Elle aime particulièrement gérer les stocks et s'assure être zero déchêt !
-          </p>
-        </article>
+        </div>
       </div>
     </div>
   </section>
 
   <section class="section section--tea" id="gina">
     <div class="container">
-      <div class="about-gina">
-        <div class="about-gina__mascot reveal">
+      <div class="about-person about-person--reverse">
+        <div class="about-person__portrait about-person__portrait--mascot reveal">
           <GinaMascot
-            variant="main"
+            variant="welcome"
             size="lg"
-            caption="Gina, directrice secrête de la maison."
+            caption="Gina, directrice secrète de la maison."
           />
         </div>
-        <div class="about-gina__copy reveal">
+        <div class="about-person__copy reveal">
           <SectionHeading
-            eyebrow="Le fil rouge"
-            title="Gina, la directrice secrête de la maison."
+            eyebrow="Directrice secrète"
+            title="Gina, directrice secrète de la maison."
           />
+          <p class="about-person__role">{team.mascot.role}</p>
           <p>
-            Petite bouledogue française noire, Gina fait partie de l'ambiance des Ursulines. Les habitués la connaissent bien : elle observe, accueille et rappelle que la maison aime les présences simples et vivantes.
+            Petite bouledogue française, Gina est au coeur de l'ambiance des Ursulines. Les habitués la connaissent bien : elle observe, accueille et rappelle que la maison aime les présences simples et vivantes.
           </p>
           <p>
             Vous la croiserez peut-être en salle, posée près d'une chaise, ou à l'écart sur son coussin. Discrète, jamais imposante — juste là, comme un détail vivant du lieu.
@@ -115,7 +148,7 @@ import { images, galleryAbout } from "../data/images";
     <div class="container container--narrow about-cta">
       <h2>Venir aux Ursulines</h2>
       <p>129 Quai Henri IV, 76200 Dieppe — au plus simple, le téléphone.</p>
-      <div class="cluster">
+      <div class="cluster about-cta__actions">
         <a class="btn btn--warm" href={contact.phoneHref}>Appeler {contact.phone}</a>
         <a class="btn btn--ghost" href={url("contact")}>Page contact</a>
       </div>
@@ -128,63 +161,92 @@ import { images, galleryAbout } from "../data/images";
     font-size: var(--fs-lead);
     color: var(--ink-soft);
   }
-  .about-team {
-    display: grid;
-    gap: var(--space-5);
-  }
-  .about-card {
-    position: relative;
-    padding: clamp(1.5rem, 3vw, 2rem);
-    background: var(--bg-paper);
-    border: 1px solid var(--line-soft);
-    border-radius: var(--radius-xl);
-    box-shadow: var(--shadow-sm);
-  }
-  .about-card h2 {
-    margin: 0 0 0.2rem;
-    font-size: 1.6rem;
-  }
-  .about-card__role {
-    font-family: var(--font-script);
-    color: var(--terracotta);
-    font-size: var(--fs-script-md);
-    margin: 0 0 var(--space-3);
-  }
-  .about-card p {
-    color: var(--ink-soft);
-    margin: 0;
-  }
-  .about-card--gina {
-    background: linear-gradient(160deg, var(--bg-paper) 0%, var(--bg-soft) 100%);
-  }
-  .about-card__mark {
-    position: absolute;
-    top: 14px;
-    right: 14px;
-    color: var(--olive-deep);
-  }
-  @media (min-width: 760px) {
-    .about-team {
-      grid-template-columns: repeat(3, 1fr);
-    }
-  }
 
-  .about-gina {
+  /* Intro : titre + façade */
+  .about-intro {
     display: grid;
     gap: var(--space-6);
     align-items: center;
   }
-  .about-gina__mascot {
+  .about-intro__copy {
+    max-width: 62ch;
+  }
+  .about-intro__figure {
+    margin: 0;
+    border-radius: var(--radius-xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    background: var(--bg-paper);
+  }
+  .about-intro__figure img {
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+  }
+  @media (min-width: 880px) {
+    .about-intro {
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: var(--space-8);
+    }
+    .about-intro__figure img {
+      aspect-ratio: 4 / 5;
+    }
+  }
+
+  /* Sections personnes — image / texte */
+  .about-person {
+    display: grid;
+    gap: var(--space-6);
+    align-items: center;
+  }
+  .about-person__copy {
+    max-width: 60ch;
+  }
+  .about-person__role {
+    font-family: var(--font-script);
+    color: var(--terracotta);
+    font-size: var(--fs-script-md);
+    margin: -0.6rem 0 var(--space-4);
+  }
+  .about-person__copy p {
+    color: var(--ink-soft);
+  }
+  .about-person__portrait {
     display: flex;
     justify-content: center;
   }
-  @media (min-width: 720px) {
-    .about-gina {
-      grid-template-columns: auto 1fr;
+  .about-person__portrait img {
+    width: 100%;
+    max-width: 380px;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    background: var(--bg-paper);
+  }
+  .about-person__portrait--mascot {
+    align-items: center;
+  }
+
+  @media (min-width: 820px) {
+    .about-person {
+      grid-template-columns: 0.85fr 1.15fr;
       gap: var(--space-8);
     }
-    .about-gina__mascot {
+    .about-person__portrait {
       justify-content: flex-start;
+    }
+    .about-person--reverse {
+      grid-template-columns: 1.15fr 0.85fr;
+    }
+    .about-person--reverse .about-person__portrait {
+      order: 2;
+      justify-content: flex-end;
+    }
+    .about-person--reverse .about-person__copy {
+      order: 1;
     }
   }
 
@@ -209,7 +271,14 @@ import { images, galleryAbout } from "../data/images";
   .about-cta {
     text-align: center;
   }
-  .about-cta .cluster {
+  .about-cta h2,
+  .about-cta p {
+    margin-inline: auto;
+  }
+  .about-cta p {
+    max-width: 56ch;
+  }
+  .about-cta__actions {
     justify-content: center;
     margin-top: var(--space-4);
   }

@@ -10,10 +10,12 @@ const { variant = "card", highlight = true } = Astro.props;
 
 <div class:list={["hours", { "hours--card": variant === "card" }]}>
   {highlight && (
-    <p class="hours__highlight">
-      <span class="eyebrow">Important</span>
-      Le restaurant est ouvert <strong>vendredi, samedi et dimanche</strong>.
-    </p>
+    <div class="hours__highlight">
+      <span class="eyebrow hours__highlight-label">Important</span>
+      <p class="hours__highlight-text">
+        Le restaurant est ouvert <strong>vendredi, samedi et dimanche</strong>.
+      </p>
+    </div>
   )}
 
   <ul class="hours__list">
@@ -46,12 +48,18 @@ const { variant = "card", highlight = true } = Astro.props;
   }
   .hours__highlight {
     margin: 0 0 var(--space-4);
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .hours__highlight-label {
+    align-self: flex-start;
+  }
+  .hours__highlight-text {
+    margin: 0;
     font-size: 1rem;
     color: var(--ink);
     line-height: 1.45;
-  }
-  .hours__highlight .eyebrow {
-    margin-right: 0.6rem;
   }
   .hours__list {
     list-style: none;
