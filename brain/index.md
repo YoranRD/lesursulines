@@ -63,7 +63,7 @@ Les Ursulines est un **comptoir végétalien à bulles et à culture** : un rest
 - Les menus du jour changent et sont annoncés sur Instagram
 - Le lieu accepte les réservations et les visiteurs sans réservation
 - Terrasse, accessibilité PMR, animaux acceptés
-- Gina, petit bouledogue français noir, est une mascotte importante du lieu
+- Gina, petit bouledogue français, est la réelle directrice du lieu
 
 ## Points à vérifier / TODO
 - Email définitif de contact

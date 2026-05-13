@@ -94,7 +94,7 @@ Les photos doivent porter l’identité. Éviter de trop les filtrer. Corriger u
 - Cartes “ardoise du jour” sans faire faux tableau noir partout.
 
 ## Gina — fil rouge visuel
-Gina, la petite bouledogue française noire mascotte du restaurant, est utilisée comme fil rouge discret du site.
+Gina, la petite bouledogue française du restaurant, est utilisée comme fil rouge discret du site. Présentée comme la vraie directrice des opérations !
 
 Sources officielles : PNG noir/blanc fournis par l'utilisateur dans `Images/Gina/`, copiés dans `public/images/gina/`.
 

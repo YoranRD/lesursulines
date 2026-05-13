@@ -111,7 +111,7 @@ Meta :
 ### 5. Culture / lieu
 - Comptoir végétalien à bulles et à culture.
 - Lieux inclusifs et restaurants locaux.
-- Gina, mascotte du lieu.
+- Gina, directrice secrête du lieu.
 
 ## Règles SEO
 - Une page = une intention principale.

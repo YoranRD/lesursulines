@@ -99,7 +99,7 @@ Toléré seulement si utile :
 - motif botanique vectoriel discret ;
 - texture papier abstraite légère.
 
-## Gina — mascotte du lieu
+## Gina — directrice du lieu
 
 ### Sources officielles
 Les visuels officiels de Gina sont les PNG noir/blanc fournis par l'utilisateur :
@@ -149,7 +149,7 @@ Props : `variant`, `size` (`sm | md | lg`), `caption?`, `decorative?`, `class?`.
 - Homepage / `StorySection` — `welcome` + légende « Gina veille aussi sur la maison. »
 - `/carte` — `cake` (décorative) près des desserts ; `tea` + légende près des boissons.
 - `/brunch` — `birthday-profile` + légende dans l'encart groupes.
-- `/a-propos` — section dédiée avec `main` (size `lg`) + paragraphe « Gina, la mascotte de la maison ».
+- `/a-propos` — section dédiée avec `main` (size `lg`) + paragraphe « Gina, la directrice secrête de la maison ».
 - `/contact` — `guide` + légende « Gina vous montre le chemin. ».
 - `/boutique` — `cake` + légende dans le bloc d'intro.
 - `/journal` — `smile-profile` (décorative) en petit rappel éditorial discret.

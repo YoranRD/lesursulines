@@ -92,13 +92,13 @@ Le site ne doit pas afficher un discours politique frontal. Il doit traduire cet
 
 ## Personnes derrière le lieu
 - **Frédérique Diarra** : cheffe, cuisine, générosité, plats végétaux faits maison.
-- **Delphine Chevalme** : direction artistique, service, ambiance, accueil.
+- **Delphine Chevalme** : direction artistique, service, accueil.
 
 ## Histoire courte
 Deux femmes passionnées de cuisine, de culture et de végétal ont créé Les Ursulines à Dieppe pour proposer une cuisine faite maison, généreuse et respectueuse du vivant. Le lieu réunit restaurant, salon de thé, brunch et espace de rencontre, avec une atmosphère où chacun peut venir manger, discuter, lire, découvrir et se sentir accueilli.
 
 ## Mascotte
-**Gina** est le petit bouledogue français noir du lieu. Elle est une mascotte affective et mémorable.
+**Gina** est le petit bouledogue français, vraie cheffe du lieu. Elle est une directrice affective et mémorable.
 
 Usage recommandé :
 - petit pictogramme illustré ;

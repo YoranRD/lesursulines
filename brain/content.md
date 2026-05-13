@@ -130,8 +130,8 @@ Règle :
 - Animaux : oui, très acceptés
 - Paiement : espèces et CB
 
-## Gina, mascotte du lieu
-Gina est la petite bouledogue française noire qui vit aux Ursulines. Elle est aimée des habitués et fait partie de l'ambiance.
+## Gina, directrice du lieu
+Gina est la petite bouledogue française qui vit aux Ursulines. Elle est aimée des habitués et fait partie de l'ambiance.
 
 Visuels officiels : PNG noir/blanc fournis par l'utilisateur dans `/Images/Gina/`, copiés dans `public/images/gina/` et exposés via le composant `GinaMascot`. Voir `brain/images.md` pour le mapping et les règles de placement.
 
@@ -147,7 +147,7 @@ Microcopy validés (à réutiliser tels quels) :
 - « Gina aime les anniversaires. » — brunch, encart groupes.
 - « Gina vous montre le chemin. » — page contact.
 - « Gina goûte (presque) tous les gâteaux. » — page boutique.
-- « Gina, mascotte de la maison. » — page À propos.
+- « Gina, directrice de la maison. » — page À propos.
 
 Texte long (page À propos) :
 > Petite bouledogue française noire, Gina fait partie de l’ambiance des Ursulines. Les habitués la connaissent bien : elle observe, accueille et rappelle que la maison aime les présences simples et vivantes.

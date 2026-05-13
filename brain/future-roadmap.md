@@ -65,7 +65,7 @@ Idées d’articles :
 3. Une cuisine végétale qui rassasie vraiment.
 4. Dieppe pour les voyageurs vegan et végétariens.
 5. Les coulisses d’un menu du jour végétalien.
-6. Gina, mascotte des Ursulines.
+6. Gina, directrice des Ursulines.
 7. Produits locaux et cuisine végétale en Normandie.
 8. Tea-time vegan : desserts, cookies et boissons maison.
 
