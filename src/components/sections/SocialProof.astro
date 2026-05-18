@@ -1,5 +1,6 @@
 ---
-import { contact } from "../../data/site";
+import { asset } from "../../lib/url";
+import { contact, googleReview } from "../../data/site";
 import ReviewBadge from "../ui/ReviewBadge.astro";
 import SectionHeading from "../ui/SectionHeading.astro";
 ---
@@ -11,37 +12,108 @@ import SectionHeading from "../ui/SectionHeading.astro";
         <SectionHeading
           eyebrow="Ils sont déjà passés"
           title="Une table appréciée des Dieppois et des voyageurs."
-          lead="La note Google parle pour nous : c'est l'écho de tous ceux qui ont poussé la porte. Pour le menu d'aujourd'hui, c'est sur Instagram."
+          lead="Des retours de visiteurs, une adresse vegan référencée, et les bons liens pour suivre l'ardoise ou réserver."
         />
       </div>
 
       <div class="proof__cards">
         <div class="proof__card proof__card--rating">
-          <ReviewBadge />
-          <p class="proof__note">
-            Note Google fournie par les avis des visiteurs.
-            <span class="visually-hidden">
-              Note non incluse en données structurées tant que la source officielle Google Business n'est pas vérifiée.
+          <div class="proof__card-head">
+            <span class="proof__mark proof__mark--logo">
+              <img
+                src={asset("images/logo_ursulines.webp")}
+                alt="Logo Les Ursulines"
+                class="proof__logo"
+                width="44"
+                height="44"
+                loading="lazy"
+                decoding="async"
+              />
             </span>
+            <p class="proof__kicker">Avis Google</p>
+          </div>
+          <div class="proof__main">
+            <ReviewBadge variant="inline" />
+          </div>
+          <p class="proof__body">
+            Les retours des visiteurs, entre habitués dieppois et voyageurs de passage.
           </p>
+          <span class="visually-hidden">
+            Note non incluse en données structurées tant que la source officielle Google Business n'est pas vérifiée.
+          </span>
+          <a
+            class="btn btn--ghost proof__action"
+            href={googleReview.reviewsUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Lire les avis Google
+          </a>
+        </div>
+
+        <div class="proof__card proof__card--happycow">
+          <div class="proof__card-head">
+            <span class="proof__mark proof__mark--logo">
+              <img
+                src={asset(contact.happyCow.logo)}
+                alt="Logo HappyCow"
+                class="proof__logo"
+                width="44"
+                height="44"
+                loading="lazy"
+                decoding="async"
+              />
+            </span>
+            <p class="proof__kicker">Référencé HappyCow</p>
+          </div>
+          <p class="proof__main">Un repère utile</p>
+          <p class="proof__body">
+            Pour les voyageurs vegan et curieux de passage à Dieppe.
+          </p>
+          <a
+            class="btn btn--ghost proof__action"
+            href={contact.happyCow.url}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Voir la page HappyCow
+          </a>
         </div>
 
         <div class="proof__card">
-          <p class="proof__title">Suivre l'ardoise du jour</p>
+          <div class="proof__card-head">
+            <span class="proof__mark proof__mark--icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <rect x="4" y="4" width="16" height="16" rx="5" />
+                <circle cx="12" cy="12" r="3.2" />
+                <circle cx="16.8" cy="7.2" r="0.8" />
+              </svg>
+            </span>
+            <p class="proof__kicker">Réseaux sociaux</p>
+          </div>
+          <p class="proof__main">Suivre l'ardoise du jour</p>
           <p class="proof__body">
             Les plats changent — Instagram est l'endroit le plus fiable pour voir le menu de chaque service.
           </p>
-          <a class="btn btn--warm" href={contact.instagram} target="_blank" rel="noopener noreferrer">
+          <a class="btn btn--warm proof__action" href={contact.instagram} target="_blank" rel="noopener noreferrer">
             Instagram {contact.instagramHandle}
           </a>
         </div>
 
         <div class="proof__card">
-          <p class="proof__title">Réserver une table</p>
+          <div class="proof__card-head">
+            <span class="proof__mark proof__mark--icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.13 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z" />
+              </svg>
+            </span>
+            <p class="proof__kicker">Réservation</p>
+          </div>
+          <p class="proof__main">Réserver une table</p>
           <p class="proof__body">
             Pour un repas seul, à deux, en famille ou en groupe. Le téléphone reste le moyen le plus simple.
           </p>
-          <a class="btn" href={contact.phoneHref}>Appeler {contact.phone}</a>
+          <a class="btn proof__action" href={contact.phoneHref}>Appeler {contact.phone}</a>
         </div>
       </div>
     </div>
@@ -66,34 +138,90 @@ import SectionHeading from "../ui/SectionHeading.astro";
     box-shadow: var(--shadow-sm);
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.65rem;
+    height: 100%;
+    min-width: 0;
   }
   .proof__card--rating {
-    align-items: flex-start;
     background: linear-gradient(160deg, var(--bg-paper) 0%, var(--bg-soft) 100%);
   }
-  .proof__title {
+  .proof__card-head {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-height: 56px;
+  }
+  .proof__mark {
+    width: 56px;
+    height: 56px;
+    flex: 0 0 56px;
+    display: grid;
+    place-items: center;
+    border: 1px solid var(--line-soft);
+    border-radius: 50%;
+    background: var(--bg-paper);
+  }
+  .proof__mark--icon {
+    color: var(--olive-deep);
+    background: var(--bg-soft);
+  }
+  .proof__mark svg {
+    width: 25px;
+    height: 25px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.65;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .proof__logo {
+    width: 44px;
+    height: 44px;
+    object-fit: contain;
+    border-radius: var(--radius-sm);
+  }
+  .proof__kicker {
+    margin: 0;
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: var(--olive-deep);
+    letter-spacing: 0.02em;
+  }
+  .proof__main {
     font-family: var(--font-serif);
     font-size: 1.35rem;
     color: var(--ink);
     margin: 0;
+    line-height: 1.2;
   }
   .proof__body {
     margin: 0;
     color: var(--ink-soft);
   }
-  .proof__note {
-    font-size: 0.85rem;
-    color: var(--ink-mute);
-    margin: 0.5rem 0 0;
-  }
-  .proof__card .btn {
+  .proof__action {
     align-self: flex-start;
-    margin-top: 0.4rem;
+    margin-top: auto;
+    font-size: 0.9rem;
+    max-width: 100%;
+    line-height: 1.15;
+    white-space: normal;
   }
+  .proof__main :global(.review) {
+    flex-wrap: wrap;
+    gap: 0.35rem 0.65rem;
+  }
+  .proof__main :global(.review__text) {
+    line-height: 1.2;
+  }
+
   @media (min-width: 760px) {
     .proof__cards {
-      grid-template-columns: repeat(3, 1fr);
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (min-width: 1080px) {
+    .proof__cards {
+      grid-template-columns: repeat(4, 1fr);
     }
   }
 </style>

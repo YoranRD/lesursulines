@@ -3,7 +3,6 @@ import { asset } from "../../lib/url";
 import { url } from "../../lib/url";
 import { contact } from "../../data/site";
 import { heroImage, heroMobileImage } from "../../data/images";
-import ReviewBadge from "../ui/ReviewBadge.astro";
 ---
 
 <section class="hero">
@@ -33,9 +32,6 @@ import ReviewBadge from "../ui/ReviewBadge.astro";
       <div class="cluster hero__ctas">
         <a class="btn" href={contact.phoneHref}>Appeler — réserver</a>
         <a class="btn btn--ghost" href={url("carte")}>Voir la carte</a>
-      </div>
-      <div class="hero__trust">
-        <ReviewBadge variant="inline" />
       </div>
     </div>
   </div>
@@ -131,8 +127,5 @@ import ReviewBadge from "../ui/ReviewBadge.astro";
   .hero .btn--ghost:hover {
     border-color: #fff;
     color: #fff;
-  }
-  .hero__trust {
-    margin-top: var(--space-2);
   }
 </style>

@@ -44,6 +44,11 @@ export const contact = {
     "https://www.google.com/maps/dir/?api=1&destination=129+Quai+Henri+IV+76200+Dieppe",
   instagram: "https://www.instagram.com/les.ursulines/",
   instagramHandle: "@les.ursulines",
+  happyCow: {
+    url: "https://www.happycow.net/reviews/les-ursulines-dieppe-347946",
+    logo: "images/happycow-logo.webp",
+    label: "Référencé sur HappyCow",
+  },
 } as const;
 
 export type DayHours = {
@@ -92,6 +97,7 @@ export const googleReview = {
   rating: 4.9,
   count: 243,
   source: "Google",
+  reviewsUrl: "https://www.google.com/search?q=Les+Ursulines+Dieppe+avis",
   jsonLdAllowed: false,
 } as const;
 
