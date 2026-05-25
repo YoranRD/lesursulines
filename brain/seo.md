@@ -38,10 +38,10 @@ Meta description :
 Intention : carte / menu restaurant vegan Dieppe.
 
 Title :
-`Carte & menu du jour — Les Ursulines, restaurant vegan à Dieppe`
+`Carte — Les Ursulines, restaurant vegan à Dieppe`
 
 Meta :
-`Découvrez le fonctionnement de la carte des Ursulines : plats végétaliens du jour, desserts maison, boissons, tea-time et menu annoncé sur Instagram.`
+`Découvrez la carte des Ursulines : plats végétaliens du jour, desserts maison, boissons, petit déjeuner et brunch dominical à Dieppe.`
 
 ### Brunch
 Intention : brunch vegan Dieppe.

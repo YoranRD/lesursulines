@@ -1,5 +1,5 @@
 ---
-import { site, contact, hours, navFooter } from "../../data/site";
+import { site, contact, seasonalHoursNote, navFooter } from "../../data/site";
 import { url } from "../../lib/url";
 ---
 
@@ -19,14 +19,11 @@ import { url } from "../../lib/url";
 
     <div class="site-footer__hours">
       <p class="site-footer__label">Horaires</p>
-      <ul>
-        {hours.map((h) => (
-          <li>
-            <span>{h.day}</span>
-            <span>{h.closed ? "Fermé" : (h.slots ?? []).join(" · ")}</span>
-          </li>
-        ))}
-      </ul>
+      <p class="site-footer__hours-note">{seasonalHoursNote.title}</p>
+      <p class="site-footer__hours-detail">
+        Jours et heures actualisés sur
+        <a href={contact.mapsUrl} target="_blank" rel="noopener noreferrer">Google</a>.
+      </p>
     </div>
 
     <nav class="site-footer__nav" aria-label="Liens du site">
@@ -90,22 +87,15 @@ import { url } from "../../lib/url";
     margin: 0 0 var(--space-3);
     color: var(--bg-cream);
   }
-  .site-footer__hours ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: grid;
-    gap: 0.35rem;
-  }
-  .site-footer__hours li {
-    display: flex;
-    justify-content: space-between;
-    gap: 1rem;
-    font-size: 0.95rem;
-    color: rgba(244, 233, 224, 0.92);
-  }
-  .site-footer__hours li span:first-child {
+  .site-footer__hours-note {
+    margin: 0 0 0.4rem;
+    color: rgba(244, 233, 224, 0.95);
     font-weight: 500;
+  }
+  .site-footer__hours-detail {
+    margin: 0;
+    font-size: 0.92rem;
+    color: rgba(244, 233, 224, 0.78);
   }
   .site-footer__nav ul {
     list-style: none;

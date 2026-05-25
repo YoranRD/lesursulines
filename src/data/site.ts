@@ -60,32 +60,27 @@ export type DayHours = {
   schemaDay?: string;
 };
 
-export const hours: DayHours[] = [
-  {
-    day: "Vendredi",
-    shortDay: "Ven.",
-    slots: ["10:30 – 14:30", "18:30 – 21:00"],
-    schemaDay: "Friday",
-  },
-  {
-    day: "Samedi",
-    shortDay: "Sam.",
-    slots: ["10:30 – 14:30", "18:30 – 21:00"],
-    schemaDay: "Saturday",
-  },
-  {
-    day: "Dimanche",
-    shortDay: "Dim.",
-    slots: ["10:00 – 15:00"],
-    schemaDay: "Sunday",
-  },
-  { day: "Lundi", shortDay: "Lun.", closed: true },
-  { day: "Mardi", shortDay: "Mar.", closed: true },
-  { day: "Mercredi", shortDay: "Mer.", closed: true },
-  { day: "Jeudi", shortDay: "Jeu.", closed: true },
-];
+/**
+ * Les horaires des Ursulines varient selon la saison.
+ * Aucun planning fixe n'est affiché sur le site — les jours et heures
+ * d'ouverture sont actualisés sur Google. Voir `seasonalHoursNote`.
+ * Cette structure est conservée en interne pour compatibilité ;
+ * elle n'est plus affichée publiquement.
+ */
+export const hours: DayHours[] = [];
 
-export const openDays = ["Vendredi", "Samedi", "Dimanche"];
+export const seasonalHoursNote = {
+  title: "Horaires variables selon la saison.",
+  short: "Horaires variables selon la saison — consultez Google avant votre visite.",
+  detail:
+    "Les jours et heures d'ouverture sont actualisés sur Google. Pensez à vérifier avant votre venue.",
+};
+
+export const brunchHours = {
+  service: "Le dimanche, de 11h à 15h.",
+  slots: "Deux créneaux de réservation : 11h ou 13h.",
+  short: "Brunch dominical de 11h à 15h — deux créneaux : 11h ou 13h.",
+};
 
 /**
  * Note Google fournie par l'utilisateur.

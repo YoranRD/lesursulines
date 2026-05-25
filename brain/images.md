@@ -22,7 +22,10 @@ Si les images sont copiées dans `public/images/`, conserver les originales.
 - `facade_2.webp`
 - `facade_3.webp`
 - `horaires_et_concept.webp`
-- `menu_hors_plats.webp`
+- `menu-les-ursulines.webp` (nouvelle carte officielle)
+- `restaurant-facade.webp` (photo extérieure principale)
+- `restaurant-entree.webp` (entrée du restaurant)
+- `restaurant-terrasse.webp` (terrasse)
 - `logo_ursulines.webp`
 - `plat_01.webp`
 - `plat_1.webp`
@@ -36,13 +39,19 @@ Si les images sont copiées dans `public/images/`, conserver les originales.
 
 ## Usage recommandé
 ### Hero — décision DA validée
-- Desktop : utiliser `facade.webp`, `facade_2.webp` ou `facade_3.webp` en priorité. La façade ancre le lieu à Dieppe, renforce la confiance locale et différencie des sites génériques.
+- Desktop : crop actuel validé sur `facade.webp`. Ne pas changer l’image du hero sans accord.
 - Mobile : si la façade donne un rendu froid ou peu engageant sur petit écran, autoriser un plat généreux ou un dessert appétissant via `object-position` CSS ou image alternative selon breakpoint.
 - Règle commune : le hero doit immédiatement dire "restaurant réel à Dieppe", pas concept abstrait.
 - Ne jamais utiliser une image IA ou stock générique en hero.
 
+### Photos extérieures (priorité pour À propos, Story, Galleries)
+1. `restaurant-facade.webp` — photo principale.
+2. `restaurant-entree.webp` — photo secondaire.
+3. `restaurant-terrasse.webp` — photo tertiaire.
+Les anciennes `facade.webp` / `facade_2.webp` / `facade_3.webp` ne sont plus prioritaires pour les sections "lieu" hors hero.
+
 ### Carte / menu
-- `menu_hors_plats.webp` pour la carte boissons / éléments fixes.
+- `menu-les-ursulines.webp` pour la carte officielle (nouvelle image).
 - `horaires_et_concept.webp` peut servir pour raconter le concept, mais attention à la lisibilité.
 - Photos de plats pour illustrer le menu changeant.
 
@@ -52,14 +61,14 @@ Si les images sont copiées dans `public/images/`, conserver les originales.
 - desserts
 - plats colorés
 
-### Desserts / tea-time
+### Desserts / petit déjeuner
 - `dessert_1.webp`
 - `dessert_2.webp`
 - `dessert_3.webp`
 - `baking_cookies.webp`
 
 ### À propos
-- façade ;
+- photos extérieures (`restaurant-facade.webp`, `restaurant-entree.webp`, `restaurant-terrasse.webp`) ;
 - logo ;
 - détails du lieu ;
 - Gina si image disponible ;

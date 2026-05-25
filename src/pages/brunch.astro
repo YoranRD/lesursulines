@@ -2,10 +2,9 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionHeading from "../components/ui/SectionHeading.astro";
 import GalleryGrid from "../components/ui/GalleryGrid.astro";
-import HoursCard from "../components/ui/HoursCard.astro";
 import GinaMascot from "../components/ui/GinaMascot.astro";
 import { asset } from "../lib/url";
-import { contact } from "../data/site";
+import { contact, brunchHours } from "../data/site";
 import { images, galleryBrunch } from "../data/images";
 ---
 
@@ -15,10 +14,13 @@ import { images, galleryBrunch } from "../data/images";
 >
   <section class="section section--cream">
     <div class="container container--narrow">
-      <span class="eyebrow">Le dimanche · 10h00 – 15h00</span>
+      <span class="eyebrow">Le dimanche · 11h – 15h</span>
       <h1>Brunch végétalien à Dieppe.</h1>
       <p class="lead">
-        Une grande table sucrée-salée, généreuse, faite maison. Le brunch dominical des Ursulines est pensé pour qu'on prenne le temps : entre proches, en famille, ou pour un anniversaire de saison.
+        Une grande table sucrée-salée, généreuse et faite maison. Le brunch dominical des Ursulines est pensé pour qu'on prenne le temps : entre proches, en famille, ou pour un anniversaire de saison. Réservation conseillée.
+      </p>
+      <p class="brunch-hours">
+        <strong>De 11h à 15h, avec deux créneaux de réservation : 11h ou 13h.</strong>
       </p>
       <div class="cluster">
         <a class="btn" href={contact.phoneHref}>Réserver — {contact.phone}</a>
@@ -97,9 +99,19 @@ import { images, galleryBrunch } from "../data/images";
     <div class="container container--narrow">
       <SectionHeading
         eyebrow="Avant de venir"
-        title="Horaires"
+        title="Créneaux & réservation"
       />
-      <HoursCard />
+      <div class="brunch-hours-card">
+        <p class="brunch-hours-card__line"><strong>{brunchHours.service}</strong></p>
+        <p class="brunch-hours-card__line">{brunchHours.slots}</p>
+        <p class="brunch-hours-card__note">
+          La salle se remplit vite le dimanche — le téléphone reste le moyen le plus rapide pour réserver. En dehors du brunch, les horaires des autres services varient selon la saison ; pensez à vérifier <a href={contact.mapsUrl} target="_blank" rel="noopener noreferrer">Google</a> avant votre venue.
+        </p>
+        <div class="cluster brunch-hours-card__actions">
+          <a class="btn" href={contact.phoneHref}>Réserver — {contact.phone}</a>
+          <a class="btn btn--ghost" href={contact.mapsUrl} target="_blank" rel="noopener noreferrer">Voir sur Google</a>
+        </div>
+      </div>
     </div>
   </section>
 </BaseLayout>
@@ -108,6 +120,34 @@ import { images, galleryBrunch } from "../data/images";
   .lead {
     font-size: var(--fs-lead);
     color: var(--ink-soft);
+  }
+  .brunch-hours {
+    margin-top: var(--space-3);
+    color: var(--ink);
+    font-size: 1.05rem;
+  }
+  .brunch-hours-card {
+    background: var(--bg-paper);
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius-xl);
+    padding: clamp(1.4rem, 3vw, 2.2rem);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .brunch-hours-card__line {
+    margin: 0;
+    color: var(--ink);
+    font-size: 1.05rem;
+  }
+  .brunch-hours-card__note {
+    margin: var(--space-3) 0 0;
+    color: var(--ink-soft);
+    font-size: 0.96rem;
+  }
+  .brunch-hours-card__actions {
+    margin-top: var(--space-4);
   }
   .brunch-hero {
     display: grid;

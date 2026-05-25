@@ -24,9 +24,9 @@ Objectif : comprendre le lieu en 5 secondes et donner envie de venir.
 
 Structure V1 :
 1. Hero : restaurant végétalien à Dieppe + CTA (appeler / voir la carte).
-2. **Horaires** : bloc visible très tôt, juste après le hero. Rappeler que le restaurant est ouvert uniquement vendredi, samedi et dimanche. Ne pas laisser ce bloc en bas de page.
-3. Menu du jour : fonctionnement de la carte changeante + lien Instagram pour l'ardoise du jour.
-4. Brunch / tea-time.
+2. **Horaires** : bloc visible très tôt, juste après le hero. Rappeler que les horaires varient selon la saison et renvoyer vers Google. Ne pas afficher de table d’horaires fixes.
+3. Menu du jour : fonctionnement de la carte changeante — pour les disponibilités, renvoyer vers le téléphone (pas vers Instagram comme source systématique).
+4. Brunch / petit déjeuner.
 5. Fait maison / local / inclusif.
 6. Galerie courte de vrais plats.
 7. Preuve sociale : note Google 4,9/5 — 243 avis + lien Instagram + rappel téléphone / réservation. (Afficher visuellement, sans aggregateRating JSON-LD tant que la source Google Business n'est pas vérifiée — voir TODO SEO.)
@@ -42,12 +42,11 @@ Objectif : expliquer ce qu’on mange sans inventer une carte fixe.
 
 Contenu :
 - plats du jour ;
-- desserts ;
-- tea-time ;
-- boissons ;
-- brunch ;
-- Instagram pour le menu du jour ;
-- appel pour réservation.
+- desserts du jour ;
+- petit déjeuner & boissons ;
+- brunch (11h–15h, créneaux 11h ou 13h) ;
+- option sans gluten + mention allergies spécifiques ;
+- appel pour réservation et disponibilités.
 
 ### `/brunch`
 Priorité haute.

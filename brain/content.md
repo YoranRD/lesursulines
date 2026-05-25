@@ -17,8 +17,8 @@ Les Ursulines est un restaurant végétalien situé à Dieppe, au 129 Quai Henri
 - café ;
 - thé ;
 - boissons fraîches ;
-- brunch du dimanche ;
-- tea-time ;
+- brunch du dimanche (11h–15h, créneaux 11h ou 13h) ;
+- petit déjeuner & douceurs ;
 - produits à emporter ;
 - gâteaux ou produits à commander selon disponibilité.
 
@@ -26,12 +26,15 @@ Les Ursulines est un restaurant végétalien situé à Dieppe, au 129 Quai Henri
 La carte change régulièrement, en particulier les vrais plats du jour.
 
 Formulation recommandée :
-> Les assiettes changent au rythme du marché, des saisons et de l’inspiration de la cuisine. Le menu du jour est annoncé sur Instagram.
+> Les plats changent régulièrement, au rythme des saisons, du marché et des inspirations de la cheffe. La carte donne l’esprit de la maison ; pour une information précise avant votre venue, le plus simple est de nous contacter.
 
 Ne pas présenter une carte fixe de plats si l’information n’est pas stable.
+Ne pas présenter Instagram comme source officielle et systématique du menu du jour.
 
 ## Prix
-Information utilisateur : menu plat + dessert autour de 22 €.
+Formules affichées :
+- Menu entrée + plat ou plat + dessert : 21 €
+- Menu entrée + plat + dessert : 25 €
 
 Règle :
 - ne pas mettre le prix au centre de la communication ;
@@ -44,13 +47,14 @@ Règle :
 - produits locaux pour une partie de l’épicerie / boissons ;
 - bissap, gingembre ou boissons similaires si visibles dans le menu ;
 - beaucoup d’éléments bio, mais pas 100 % bio ;
-- option sans gluten presque tous les jours ;
+- option sans gluten proposée (pour les allergies spécifiques, demander de nous contacter) ;
 - cuisine ouverte, visible, faite maison.
 
 Formulations autorisées :
 - “local dès que possible” ;
 - “fait maison chaque jour” ;
-- “des options sans gluten sont souvent proposées” ;
+- “une option sans gluten est proposée” ;
+- “pour des allergies spécifiques, merci de nous contacter” ;
 - “une cuisine végétale généreuse, au rythme du marché”.
 
 Formulations interdites sauf validation :
@@ -64,7 +68,7 @@ Formulations interdites sauf validation :
 Le brunch du dimanche est un axe fort.
 
 Informations :
-- dimanche : 10:00–15:00 ;
+- dimanche : 11h–15h, deux créneaux de réservation à 11h ou 13h ;
 - brunch végétalien ;
 - possibilité de privatisation / grandes tablées ;
 - convient aux anniversaires, EVJF, repas de groupe calmes et conviviaux.
@@ -104,13 +108,11 @@ Règle :
 - ne pas afficher comme fait final sans lien validé.
 
 ## Horaires
-- Vendredi : 10:30–14:30, 18:30–21:00
-- Samedi : 10:30–14:30, 18:30–21:00
-- Dimanche : 10:00–15:00
-- Lundi : fermé
-- Mardi : fermé
-- Mercredi : fermé
-- Jeudi : fermé
+- Horaires variables selon la saison.
+- Les jours et heures d’ouverture sont actualisés sur Google.
+- Aucun horaire fixe hebdomadaire n’est affiché sur le site.
+- Exception : le brunch dominical, 11h–15h avec deux créneaux de réservation (11h ou 13h).
+- Ne pas afficher de tableau d’horaires fixes type vendredi/samedi/dimanche avec heures précises sur les pages publiques.
 
 ## Contact
 - Téléphone : 07 45 16 53 66

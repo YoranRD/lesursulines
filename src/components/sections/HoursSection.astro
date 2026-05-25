@@ -2,59 +2,106 @@
 import HoursCard from "../ui/HoursCard.astro";
 import ContactCard from "../ui/ContactCard.astro";
 import SectionHeading from "../ui/SectionHeading.astro";
+import { contact } from "../../data/site";
 ---
 
 <section class="section section--soft" id="horaires">
   <div class="container">
-    <div class="hours-section">
-      <div class="hours-section__intro reveal">
-        <SectionHeading
-          eyebrow="Avant de venir"
-          title="Horaires & contact"
-          lead="Nous ouvrons trois jours par semaine, vendredi, samedi et dimanche. La meilleure façon d'être sûr d'une place est d'appeler."
-        />
-        <p class="hours-section__note">
-          Le menu du jour change : pour le découvrir, retrouvez-nous sur Instagram <a href="https://www.instagram.com/les.ursulines/" target="_blank" rel="noopener noreferrer">@les.ursulines</a> ou appelez-nous directement.
-        </p>
-      </div>
-      <div class="hours-section__grid">
-        <div class="reveal"><HoursCard /></div>
-        <div class="reveal"><ContactCard /></div>
+    <div class="hours-section__heading reveal">
+      <SectionHeading
+        eyebrow="Pratique"
+        title="Horaires & contact"
+        align="center"
+      />
+    </div>
+
+    <div class="hours-section__grid">
+      <div class="reveal hours-section__cell"><HoursCard /></div>
+      <div class="reveal hours-section__cell"><ContactCard /></div>
+      <div class="reveal hours-section__cell">
+        <div class="advice advice--card">
+          <div class="advice__highlight">
+            <span class="eyebrow advice__highlight-label">Avant de venir</span>
+            <p class="advice__highlight-text">
+              <strong>Réservation conseillée.</strong>
+            </p>
+          </div>
+          <p class="advice__note">
+            Les horaires varient selon la saison : pensez à vérifier Google avant votre venue. Pour réserver une table ou un brunch, le plus simple reste de nous appeler.
+          </p>
+          <a class="btn btn--ghost advice__cta" href={contact.phoneHref}>
+            Réserver par téléphone
+          </a>
+        </div>
       </div>
     </div>
   </div>
 </section>
 
 <style>
-  .hours-section {
-    display: grid;
-    gap: var(--space-7);
-  }
-  .hours-section__intro {
-    max-width: 62ch;
-  }
-  .hours-section__note {
-    font-size: 1rem;
-    color: var(--ink-soft);
-    margin: var(--space-4) 0 0;
+  .hours-section__heading {
+    margin-bottom: var(--space-6);
   }
   .hours-section__grid {
     display: grid;
     gap: var(--space-5);
     grid-template-columns: 1fr;
+    align-items: stretch;
   }
-  @media (min-width: 760px) {
-    .hours-section {
-      grid-template-columns: 1fr 1.1fr;
-      align-items: start;
-    }
+  .hours-section__cell {
+    display: flex;
+  }
+  .hours-section__cell > * {
+    width: 100%;
+  }
+
+  @media (min-width: 720px) {
     .hours-section__grid {
       grid-template-columns: 1fr 1fr;
     }
   }
   @media (min-width: 1000px) {
-    .hours-section {
-      grid-template-columns: 1fr 1.4fr;
+    .hours-section__grid {
+      grid-template-columns: repeat(3, 1fr);
     }
+  }
+
+  /* Carte "Avant de venir" — même shell que HoursCard / ContactCard. */
+  .advice {
+    width: 100%;
+  }
+  .advice--card {
+    background: var(--bg-paper);
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius-lg);
+    padding: clamp(1.25rem, 3vw, 2rem);
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .advice__highlight {
+    margin: 0 0 var(--space-3);
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .advice__highlight-label {
+    align-self: flex-start;
+  }
+  .advice__highlight-text {
+    margin: 0;
+    font-size: 1.05rem;
+    color: var(--ink);
+    line-height: 1.45;
+  }
+  .advice__note {
+    margin: 0 0 var(--space-4);
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+  }
+  .advice__cta {
+    align-self: flex-start;
+    margin-top: auto;
   }
 </style>

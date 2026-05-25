@@ -38,7 +38,7 @@ Mauvais angle :
 - fait maison ;
 - menu du jour ;
 - brunch du dimanche ;
-- tea-time ;
+- petit déjeuner & douceurs ;
 - cuisine végétale généreuse ;
 - au rythme du marché ;
 - local dès que possible ;

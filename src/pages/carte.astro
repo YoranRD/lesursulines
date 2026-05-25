@@ -11,8 +11,8 @@ import { carteImages, menuCategoryImages } from "../data/images";
 ---
 
 <BaseLayout
-  title="Carte & menu du jour — Les Ursulines, restaurant vegan à Dieppe"
-  description="Découvrez le fonctionnement de la carte des Ursulines : plats végétaliens du jour, desserts maison, boissons, tea-time et menu annoncé sur Instagram."
+  title="Carte — Les Ursulines, restaurant vegan à Dieppe"
+  description="Découvrez la carte des Ursulines : plats végétaliens du jour, desserts maison, boissons, petit déjeuner et brunch dominical à Dieppe."
 >
   <section class="section section--cream">
     <div class="container">
@@ -21,16 +21,18 @@ import { carteImages, menuCategoryImages } from "../data/images";
           <span class="eyebrow">La carte</span>
           <h1>Une carte vivante, faite maison.</h1>
           <p class="lead">
-            Les vrais plats changent au rythme du marché et des saisons. Plutôt que de figer une carte, on vous explique comment ça se passe — et comment connaître l'ardoise du jour.
+            Les plats changent régulièrement, au rythme des saisons, du marché et des inspirations de la cheffe. La carte donne l'esprit de la maison ; pour une information précise avant votre venue, le plus simple est de nous contacter.
           </p>
           <ul class="guidelines">
             {menuGuidelines.map((g) => <li>{g}</li>)}
           </ul>
           <div class="cluster">
-            <a class="btn" href={contact.instagram} target="_blank" rel="noopener noreferrer">Voir le menu du jour sur Instagram</a>
-            <a class="btn btn--ghost" href={contact.phoneHref}>Appeler</a>
+            <a class="btn" href={contact.phoneHref}>Appeler</a>
+            <a class="btn btn--ghost" href={url("contact")}>Nous écrire</a>
           </div>
-          <p class="price-hint">{priceHint}</p>
+          <ul class="price-hint">
+            {priceHint.map((line) => <li>{line}</li>)}
+          </ul>
         </div>
         <figure class="carte-intro__figure reveal">
           <img
@@ -83,13 +85,13 @@ import { carteImages, menuCategoryImages } from "../data/images";
     <div class="container">
       <SectionHeading
         eyebrow="Carte indicative"
-        title="Boissons, tea-time et douceurs."
-        lead="Cette carte est plus stable et donne une idée de ce qu'on retrouve souvent au comptoir. Les desserts du jour et les plats salés évoluent — Instagram reste le meilleur endroit pour le voir."
+        title="Petit déjeuner, boissons et douceurs."
+        lead="Cette carte donne un aperçu de ce qu'on retrouve souvent au comptoir. Les desserts du jour et les plats salés évoluent — pour une information précise, le mieux est de nous appeler."
       />
       <div class="carte-image-block">
         <figure class="carte-image-block__figure reveal">
           <img src={asset(carteImages.drinks.file)} alt={carteImages.drinks.alt} loading="lazy" decoding="async" />
-          <figcaption>Carte indicative des boissons et douceurs.</figcaption>
+          <figcaption>Carte des Ursulines.</figcaption>
         </figure>
         <div class="carte-image-block__legend-wrap">
           <ul class="carte-image-block__legend">
@@ -97,12 +99,12 @@ import { carteImages, menuCategoryImages } from "../data/images";
             <li>Thés, infusions et chaï</li>
             <li>Boissons fraîches et bissap maison selon saison</li>
             <li>Pâtisseries végétales, cookies, gâteaux du jour</li>
-            <li>Plats du jour : voir Instagram ou nous appeler</li>
+            <li>Plats du jour : appelez-nous pour les disponibilités</li>
           </ul>
           <GinaMascot
             variant="tea"
             size="sm"
-            caption="Gina aime l'heure du thé."
+            caption="Gina aime le petit déjeuner."
             class="carte-image-block__gina"
           />
         </div>
@@ -185,10 +187,18 @@ import { carteImages, menuCategoryImages } from "../data/images";
     border-radius: 50%;
   }
   .price-hint {
+    list-style: none;
+    padding: 0;
+    margin: var(--space-4) 0 0;
     font-family: var(--font-script);
     font-size: var(--fs-script-md);
     color: var(--olive-deep);
-    margin-top: var(--space-4);
+    line-height: 1.35;
+    display: grid;
+    gap: 0.15rem;
+  }
+  .price-hint li {
+    margin: 0;
   }
 
   .carte-grid {

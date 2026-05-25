@@ -1,7 +1,6 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SectionHeading from "../components/ui/SectionHeading.astro";
-import HoursCard from "../components/ui/HoursCard.astro";
 import ContactCard from "../components/ui/ContactCard.astro";
 import GinaMascot from "../components/ui/GinaMascot.astro";
 import { contact } from "../data/site";
@@ -15,8 +14,8 @@ const mailtoFallback = `mailto:${contact.email}?subject=Demande%20%E2%80%94%20Le
 ---
 
 <BaseLayout
-  title="Contact, horaires & réservation — Les Ursulines Dieppe"
-  description="Appelez Les Ursulines, trouvez l'adresse sur le port de Dieppe, consultez les horaires et envoyez une demande de réservation ou de brunch de groupe."
+  title="Contact & réservation — Les Ursulines Dieppe"
+  description="Appelez Les Ursulines, trouvez l'adresse sur le port de Dieppe et envoyez une demande de réservation ou de brunch de groupe."
 >
   <section class="section section--cream">
     <div class="container container--narrow">
@@ -25,15 +24,15 @@ const mailtoFallback = `mailto:${contact.email}?subject=Demande%20%E2%80%94%20Le
       <p class="lead">
         Le plus simple, surtout pour une réservation, reste le téléphone. Vous pouvez aussi nous écrire — on revient vers vous dès que possible.
       </p>
+      <p class="contact-note">
+        Les horaires variant selon la saison, pensez à vérifier <a href={contact.mapsUrl} target="_blank" rel="noopener noreferrer">Google</a> avant votre venue.
+      </p>
     </div>
   </section>
 
   <section class="section section--paper">
-    <div class="container">
-      <div class="contact-grid">
-        <div class="reveal"><HoursCard /></div>
-        <div class="reveal"><ContactCard /></div>
-      </div>
+    <div class="container container--narrow">
+      <div class="reveal"><ContactCard /></div>
       <div class="contact-gina reveal">
         <GinaMascot
           variant="guide"
@@ -119,7 +118,7 @@ const mailtoFallback = `mailto:${contact.email}?subject=Demande%20%E2%80%94%20Le
       <div class="contact-en card">
         <p class="contact-en__title">English-speaking visitors</p>
         <p class="contact-en__body">
-          English-speaking visitors welcome — find us on the port of Dieppe or contact us before your visit. Open Friday, Saturday and Sunday only. The daily menu is shared on Instagram <a href={contact.instagram} target="_blank" rel="noopener noreferrer">@les.ursulines</a>.
+          English-speaking visitors welcome — find us on the port of Dieppe or contact us before your visit. Opening days and hours vary by season — please check <a href={contact.mapsUrl} target="_blank" rel="noopener noreferrer">Google</a> before coming. You can also follow us on Instagram <a href={contact.instagram} target="_blank" rel="noopener noreferrer">@les.ursulines</a>.
         </p>
       </div>
     </div>
@@ -131,14 +130,10 @@ const mailtoFallback = `mailto:${contact.email}?subject=Demande%20%E2%80%94%20Le
     font-size: var(--fs-lead);
     color: var(--ink-soft);
   }
-  .contact-grid {
-    display: grid;
-    gap: var(--space-5);
-  }
-  @media (min-width: 760px) {
-    .contact-grid {
-      grid-template-columns: 1fr 1fr;
-    }
+  .contact-note {
+    margin-top: var(--space-4);
+    color: var(--ink-soft);
+    font-size: 0.98rem;
   }
   .contact-gina {
     margin-top: var(--space-6);

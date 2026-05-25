@@ -45,7 +45,7 @@ Priority:
 3. make phone, reservation and location obvious;
 4. show real food and atmosphere images;
 5. communicate homemade, warm, inclusive and local identity;
-6. introduce brunch, tea-time, story, Gina and group meals.
+6. introduce brunch, petit déjeuner & douceurs, story, Gina and group meals.
 
 The homepage must quickly communicate:
 - what Les Ursulines is;
@@ -58,10 +58,10 @@ The homepage must quickly communicate:
 Create or improve the Carte page.
 
 Important:
-The dishes change daily. Do not invent a fixed menu.
-Explain the daily menu system, show examples through images, include drinks / tea-time / desserts, and make Instagram + phone CTAs very visible.
+The dishes change regularly with seasons. Do not invent a fixed menu.
+Explain the system, show examples through images, include drinks / petit déjeuner / desserts, and make phone + contact CTAs very visible (Instagram is NOT the systematic source of the daily menu).
 
-Use `menu_hors_plats.webp` if useful.
+Use `menu-les-ursulines.webp` (the new official menu image) when useful.
 
 ## Prompt Brunch
 Create or improve the Brunch page.

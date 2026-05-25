@@ -48,10 +48,10 @@ export const journalIdeas: JournalIdea[] = [
     status: "à venir",
   },
   {
-    title: "Tea-time vegan : desserts, cookies et boissons maison",
+    title: "Petit déjeuner vegan : desserts, cookies et boissons maison",
     excerpt:
-      "Notre approche du tea-time : pâtisseries végétales, cookies du jour, thés, cafés et boissons de saison.",
-    category: "Tea-time",
+      "Notre approche du petit déjeuner : pâtisseries végétales, cookies du jour, thés, cafés et boissons de saison.",
+    category: "Petit déjeuner",
     status: "à venir",
   },
 ];

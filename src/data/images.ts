@@ -28,14 +28,29 @@ export const images: Record<string, LocalImage> = {
     alt: "Façade des Ursulines vue depuis le port de Dieppe.",
     category: "facade",
   },
+  restaurantFacade: {
+    file: "images/restaurant-facade.webp",
+    alt: "Façade des Ursulines, restaurant végétalien à Dieppe.",
+    category: "facade",
+  },
+  restaurantEntree: {
+    file: "images/restaurant-entree.webp",
+    alt: "Entrée des Ursulines, comptoir végétalien à Dieppe.",
+    category: "facade",
+  },
+  restaurantTerrasse: {
+    file: "images/restaurant-terrasse.webp",
+    alt: "Terrasse des Ursulines, sur le quai Henri IV à Dieppe.",
+    category: "facade",
+  },
   logo: {
     file: "images/logo_ursulines.webp",
     alt: "Logo des Ursulines, comptoir végétalien à Dieppe.",
     category: "logo",
   },
-  menuHorsPlats: {
-    file: "images/menu_hors_plats.webp",
-    alt: "Carte indicative des boissons et douceurs des Ursulines.",
+  menuLesUrsulines: {
+    file: "images/menu-les-ursulines.webp",
+    alt: "Carte des Ursulines, restaurant végétalien à Dieppe.",
     category: "menu",
   },
   horairesConcept: {
@@ -142,16 +157,16 @@ export const heroMobileImage = images.plat3;
 export const galleryHome = [
   images.plat1,
   images.dessert1,
-  images.facade2,
+  images.restaurantTerrasse,
   images.bowl1,
   images.plat4,
   images.bakingCookies,
 ];
 
 export const galleryAbout = [
-  images.facade3,
-  images.horairesConcept,
-  images.epicerie,
+  images.restaurantFacade,
+  images.restaurantEntree,
+  images.restaurantTerrasse,
   images.plat6,
   images.dessert2,
   images.bowlSucre,
@@ -168,7 +183,7 @@ export const galleryBrunch = [
 export const carteImages = {
   hero: images.plat2,
   concept: images.horairesConcept,
-  drinks: images.menuHorsPlats,
+  drinks: images.menuLesUrsulines,
   desserts: images.dessert2,
   cookies: images.bakingCookies,
 };

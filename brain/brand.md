@@ -19,8 +19,8 @@ Les Ursulines est d’abord un **restaurant végétalien** : on y vient pour un 
 Le lieu fonctionne aussi comme :
 - coffee shop ;
 - salon de thé ;
-- tea-time ;
-- brunch du dimanche ;
+- petit déjeuner & douceurs ;
+- brunch du dimanche (11h–15h, créneaux 11h ou 13h) ;
 - lieu de desserts, cookies, gâteaux, boissons chaudes et fraîches.
 
 Important : ne pas réduire le lieu à un simple coffee shop.

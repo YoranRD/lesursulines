@@ -12,17 +12,16 @@ import SectionHeading from "../ui/SectionHeading.astro";
         <SectionHeading
           eyebrow="Aujourd'hui à l'ardoise"
           title="Une carte vivante, faite maison."
-          lead="Les assiettes suivent le marché, les saisons et l'inspiration de la cuisine. Le menu du jour est annoncé sur Instagram."
+          lead="Les assiettes suivent le marché, les saisons et l'inspiration de la cuisine. Pour connaître les disponibilités, le plus simple est de nous appeler."
         />
         <ul class="menu-preview__list">
           <li><strong>Plats du jour</strong> — deux assiettes au choix, généreuses, fait maison.</li>
           <li><strong>Desserts</strong> — pâtisseries végétales, gâteaux, cookies du jour.</li>
-          <li><strong>Tea-time</strong> — thé, café, boissons fraîches, douceurs sucrées.</li>
-          <li><strong>Sans gluten</strong> — souvent disponible, demandez-nous.</li>
+          <li><strong>Petit déjeuner & boissons</strong> — thé, café, boissons fraîches, douceurs sucrées.</li>
+          <li><strong>Sans gluten</strong> — option proposée, demandez-nous pour les allergies spécifiques.</li>
         </ul>
         <div class="cluster menu-preview__ctas">
-          <a class="btn" href="https://www.instagram.com/les.ursulines/" target="_blank" rel="noopener noreferrer">Voir le menu du jour sur Instagram</a>
-          <a class="btn btn--ghost" href={url("carte")}>Comprendre la carte</a>
+          <a class="btn" href={url("carte")}>Voir la carte</a>
           <a class="btn btn--ghost" href={contact.phoneHref}>Appeler</a>
         </div>
       </div>
